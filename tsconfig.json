@@ -1,4 +1,5 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -13,6 +14,7 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
+      "vuetify",
       "jest"
     ],
     "paths": {
