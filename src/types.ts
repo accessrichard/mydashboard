@@ -11,3 +11,16 @@ export interface ILinks {
   header: string;
   links: ILink[];
 }
+
+export interface IRootState {
+  version: string;
+}
+
+export interface ILayout {
+  leftSidebar: ISideBar;
+  wikiSidebar: ISideBar;
+}
+
+export interface ISideBar {
+  isVisible: boolean;
+}

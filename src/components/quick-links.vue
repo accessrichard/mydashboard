@@ -17,7 +17,7 @@
 
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { ILink } from '@/components/types';
+import { ILink } from '@/types';
 import mock from "./quick-links.mock";
 
 @Component

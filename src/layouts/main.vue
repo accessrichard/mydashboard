@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <app-wikibar></app-wikibar>
     <app-header></app-header>
     <app-sidebar></app-sidebar>
     <app-content></app-content>
@@ -9,6 +10,7 @@
 <script lang="ts">
 
 import AppHeader from "@/components/app-header.vue";
+import AppWikibar from "@/components/app-wikibar.vue";
 import AppSidebar from "@/components/app-sidebar.vue";
 import AppContent from "@/components/app-content.vue";
 import AppFooter from "@/components/app-footer.vue";
@@ -18,6 +20,7 @@ import { Component, Vue } from "vue-property-decorator";
   name: "DefaultLayout",
   components: {
     AppHeader,
+    AppWikibar,
     AppSidebar,
     AppContent,
     AppFooter

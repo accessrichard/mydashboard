@@ -1,22 +1,33 @@
-import { Module, VuexModule, Mutation, Action } from "vuex-module-decorators";
-
-interface LayoutSidebar {
-  isVisible: boolean;
-}
+import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
+import { ILayout, ISideBar } from '@/types';
 
 @Module({ namespaced: true })
 export default class LayoutModule extends VuexModule {
-  public sidebar: LayoutSidebar = {
-    isVisible: true
+  public leftSidebar: ISideBar = {
+      isVisible: true
   };
 
-  @Action({ commit: "commitToggleSidebar" })
-  public toggleSidebar(val: LayoutSidebar): LayoutSidebar {
+  public wikiSidebar: ISideBar = {
+    isVisible: true
+};
+
+  @Action({ commit: 'commitToggleLeftSidebar' })
+  public toggleLeftSidebar(val: ISideBar): ISideBar {
+    return val;
+  }
+
+  @Action({ commit: 'commitToggleWikiSidebar' })
+  public toggleWikiSidebar(val: ISideBar): ISideBar {
     return val;
   }
 
   @Mutation
-  public commitToggleSidebar(state: LayoutSidebar) {
-    this.sidebar = state;
+  public commitToggleLeftSidebar(state: ISideBar) {
+    this.leftSidebar = state;
+  }
+
+  @Mutation
+  public commitToggleWikiSidebar(state: ISideBar) {
+    this.wikiSidebar = state;
   }
 }

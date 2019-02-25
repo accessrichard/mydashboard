@@ -16,7 +16,7 @@
         <v-text-field v-model="newPageName">
           <template slot="label">New Page Name</template>
         </v-text-field>
-        <v-btn color="success" :to="{ name: 'wiki-edit', params: { page: createNewPage }}">Create</v-btn>
+        <v-btn color="success" v-on:click="toEdit">Create</v-btn>
       </v-container>
     </v-form>
   </div>
@@ -26,6 +26,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import WikiService from "./WikiService";
 import mock from "./toc.mock";
+import router from "@/router";
 
 @Component
 export default class WikRead extends Vue {
@@ -39,6 +40,15 @@ export default class WikRead extends Vue {
 
   get createNewPage(): string {
     return this.replaceSpaces(this.newPageName);
+  }
+
+  public toEdit(): void {
+    router.push({
+      name: "wiki-edit",
+      params: {
+        page: this.createNewPage
+      }
+    });
   }
 
   public replaceSpaces(pageName: string): string {

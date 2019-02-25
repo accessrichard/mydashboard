@@ -12,11 +12,19 @@ import WikiService from "./WikiService";
 import MarkdownEditor from "@/components/editor/markdown-editor.vue";
 import marked from "marked";
 import router from "@/router";
+import { Route } from "vue-router";
+
+Component.registerHooks(["beforeRouteUpdate"]);
 
 @Component
 export default class Read extends WikiPage {
   constructor() {
     super();
+  }
+
+  public beforeRouteUpdate(to: Route, from: Route, next: any) {
+    this.reloadContent();
+    next();
   }
 
   public toEdit(): void {
@@ -28,10 +36,14 @@ export default class Read extends WikiPage {
     });
   }
 
-  public mounted() {
+  public reloadContent(): void {
     this.getHtmlContent().then(content => {
       this.content = content;
     });
+  }
+
+  public mounted(): void {
+    this.reloadContent();
   }
 }
 </script>

@@ -8,7 +8,7 @@
         <v-list-tile-content>
           <v-list-tile-title>Home</v-list-tile-title>
         </v-list-tile-content>
-      </v-list-tile>     
+      </v-list-tile>
       <v-list-tile to="/links">
         <v-list-tile-action>
           <v-icon>http</v-icon>
@@ -17,7 +17,7 @@
           <v-list-tile-title>Links</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile to="/wiki/toc">
+      <v-list-tile @click.stop="toggleWikiSidebar()">
         <v-list-tile-action>
           <v-icon>toc</v-icon>
         </v-list-tile-action>
@@ -43,11 +43,17 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component
 export default class AppSidebar extends Vue {
   get drawer(): boolean {
-    return this.$store.state.layout.sidebar.visible;
+    return this.$store.state.layout.leftSidebar.visible;
   }
 
   set drawer(isVisible: boolean) {
-    this.$store.dispatch("layout/toggleSidebar", { visible: isVisible });
+    this.$store.dispatch("layout/toggleLeftSidebar", { visible: isVisible });
+  }
+
+  public toggleWikiSidebar() {
+    this.$store.dispatch("layout/toggleWikiSidebar", {
+      visible: !this.$store.state.layout.wikiSidebar.visible
+    });
   }
 }
 </script>

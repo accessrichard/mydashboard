@@ -1,4 +1,4 @@
-import { ILinks } from '@/components/types';
+import { ILinks } from '@/types';
 
 const links: ILinks[] = [
   {

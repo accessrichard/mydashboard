@@ -1,6 +1,6 @@
  <template>
   <v-toolbar color="indigo" dark fixed app>
-    <v-toolbar-side-icon v-on:click.stop="toggleSidebar()"></v-toolbar-side-icon>
+    <v-toolbar-side-icon v-on:click.stop="toggleLeftSidebar()"></v-toolbar-side-icon>
     <v-toolbar-title>Dashboard</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
@@ -21,9 +21,9 @@ import QuickLinks from './quick-links.vue';
 })
 export default class AppHeader extends Vue {
 
-  public toggleSidebar() {
-    this.$store.dispatch("layout/toggleSidebar", {
-      visible: !this.$store.state.layout.sidebar.visible
+  public toggleLeftSidebar() {
+    this.$store.dispatch("layout/toggleLeftSidebar", {
+      visible: !this.$store.state.layout.leftSidebar.visible
     });
   }
 }

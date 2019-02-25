@@ -20,7 +20,7 @@
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import mockLinks from "@/views/links/links.mock";
-import { ILinks } from "@/components/types";
+import { ILinks } from "@/types";
 
 @Component
 export default class Links extends Vue {

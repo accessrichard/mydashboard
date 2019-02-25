@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="indigo" app inset>
+  <v-footer color="indigo"  inset>
     <span class="white--text"></span>
   </v-footer>
 </template>
