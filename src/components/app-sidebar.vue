@@ -33,6 +33,14 @@
           <v-list-tile-title>Contact</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
+       <v-list-tile to="/todo">
+        <v-list-tile-action>
+          <v-icon>details</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>Todo</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
     </v-list>
   </v-navigation-drawer>
 </template>

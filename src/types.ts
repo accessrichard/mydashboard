@@ -24,3 +24,12 @@ export interface ILayout {
 export interface ISideBar {
   isVisible: boolean;
 }
+
+export interface ITodo {
+  createDate: Date;
+  completeDate: Date;
+  content: string;
+  id: number;
+  title: string;
+  type: string;
+}

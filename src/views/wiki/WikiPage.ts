@@ -12,14 +12,14 @@ export default class PageMixin extends Vue {
     this.service = new WikiService();
   }
 
-  public getHtmlContent(): Promise<string> {
-    return this.getContent(content => {
+  public getHtmlContent(pageName: string): Promise<string> {
+    return this.getContent(pageName, content => {
       return marked(content, { sanitize: true });
     });
   }
 
-  public getMarkdownContent(): Promise<string> {
-    return this.getContent(content => {
+  public getMarkdownContent(pageName: string): Promise<string> {
+    return this.getContent(pageName, content => {
       return content;
     });
   }
@@ -38,13 +38,12 @@ export default class PageMixin extends Vue {
     return this.service.savePage(this.getPageName(), content);
   }
 
-  private getContent(callback: (content: string) => string): Promise<string> {
-    const page = this.getPageName();
-    if (page === undefined) {
+  private getContent(pageName: string, callback: (content: string) => string): Promise<string> {
+    if (pageName === undefined) {
       throw new Error('Page is required.');
     }
 
-    return this.getPage(page).then(content => {
+    return this.getPage(pageName).then(content => {
       return callback(content);
     });
   }

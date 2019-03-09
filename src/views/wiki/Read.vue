@@ -23,7 +23,7 @@ export default class Read extends WikiPage {
   }
 
   public beforeRouteUpdate(to: Route, from: Route, next: any) {
-    this.reloadContent();
+    this.reloadContent(to.params.page);
     next();
   }
 
@@ -36,14 +36,14 @@ export default class Read extends WikiPage {
     });
   }
 
-  public reloadContent(): void {
-    this.getHtmlContent().then(content => {
+  public reloadContent(pageName: string): void {
+    this.getHtmlContent(pageName).then(content => {
       this.content = content;
     });
   }
 
   public mounted(): void {
-    this.reloadContent();
+    this.reloadContent(this.getPageName());
   }
 }
 </script>

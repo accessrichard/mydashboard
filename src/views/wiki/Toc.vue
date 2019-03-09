@@ -4,7 +4,7 @@
       <v-list-tile
         v-for="(page, i) in pages"
         :key="i"
-        :to="{ name: 'wiki-read', params: { page: replaceSpaces(page) }}"
+        :to="{ name: 'wiki-read', params: { page: page }}"
       >
         <v-list-tile-content>
           <v-list-tile-title>{{page}}</v-list-tile-title>
@@ -27,6 +27,7 @@ import { Component, Vue } from "vue-property-decorator";
 import WikiService from "./WikiService";
 import mock from "./toc.mock";
 import router from "@/router";
+import { Route } from "vue-router";
 
 @Component
 export default class WikRead extends Vue {
@@ -39,31 +40,23 @@ export default class WikRead extends Vue {
   }
 
   get createNewPage(): string {
-    return this.replaceSpaces(this.newPageName);
+    return this.newPageName;
   }
 
   public toEdit(): void {
     router.push({
       name: "wiki-edit",
       params: {
-        page: this.createNewPage
+        page: this.newPageName
       }
     });
-  }
 
-  public replaceSpaces(pageName: string): string {
-    return pageName.split(" ").join("_");
-  }
-
-  public replaceUnderscores(pageName: string): string {
-    return pageName.split("_").join(" ");
+    this.newPageName = "";
   }
 
   public mounted() {
     this.service.getPages().then(pages => {
-      this.pages = pages.map(item => {
-        return this.replaceUnderscores(item);
-      });
+      this.pages = pages;
     });
   }
 }

@@ -41,7 +41,7 @@ export default class Edit extends WikiPage {
   }
 
   public mounted() {
-    this.getMarkdownContent().then(content => {
+    this.getMarkdownContent(this.getPageName()).then(content => {
       this.content = content;
     }).catch((err) => {
       this.content = "# Create New Page\n\n Your page was not found.";

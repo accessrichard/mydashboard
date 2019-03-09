@@ -36,6 +36,12 @@ export default new Router({
       name: 'wiki-toc',
       component: () =>
         import(/* webpackChunkName: 'links' */ './views/wiki/Toc.vue')
+    },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: () =>
+        import(/* webpackChunkName: 'links' */ './views/todo/Todo.vue')
     }
   ]
 });
