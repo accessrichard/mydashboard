@@ -18,6 +18,10 @@ export default class HttpService {
     return axios.put(url, data);
   }
 
+  public delete(url: string, data?: any): AxiosPromise<any> {
+    return axios.delete(url, data);
+  }
+
   private initializeAxios(): any {
     axios.defaults.baseURL = config.api;
   }

@@ -24,8 +24,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import WikiService from "./WikiService";
-import mock from "./toc.mock";
+import WikiService from "@/api/WikiService";
 import router from "@/router";
 import { Route } from "vue-router";
 

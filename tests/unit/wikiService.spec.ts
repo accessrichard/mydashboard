@@ -1,4 +1,4 @@
-import WikiService from '@/views/wiki/WikiService';
+import WikiService from '@/api/WikiService';
 import axios from 'axios';
 
 axios.interceptors.request.use((request) => {

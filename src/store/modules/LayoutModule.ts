@@ -1,5 +1,5 @@
 import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
-import { ILayout, ISideBar } from '@/types';
+import { ISideBar } from '@/types';
 
 @Module({ namespaced: true })
 export default class LayoutModule extends VuexModule {

@@ -25,7 +25,7 @@
           <v-list-tile-title>Wiki</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile to="/contacts">
+      <v-list-tile to="/contact">
         <v-list-tile-action>
           <v-icon>contact_mail</v-icon>
         </v-list-tile-action>

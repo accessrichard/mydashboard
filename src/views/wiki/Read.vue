@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Component, Mixins, Vue } from "vue-property-decorator";
 import WikiPage from "./WikiPage";
-import WikiService from "./WikiService";
+import WikiService from "@/api/WikiService";
 import MarkdownEditor from "@/components/editor/markdown-editor.vue";
 import marked from "marked";
 import router from "@/router";

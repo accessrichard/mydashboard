@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <app-wikibar :key="wikiKey"></app-wikibar>
+    <app-wikibar></app-wikibar>
     <app-header></app-header>
     <app-sidebar></app-sidebar>
     <app-content></app-content>
@@ -26,14 +26,5 @@ import { Route } from "vue-router";
     AppFooter
   }
 })
-export default class MainLayout extends Vue {
-  public wikiKey: number = 0;
-
-  @Watch("$route") //// TODO: Probably a better way to do this.
-  private onRouteChange(to: Route, from: Route, next: any) {
-    if (to.name === "wiki-read" && from.name === "wiki-edit") {
-      this.wikiKey = this.wikiKey + 1;
-    }
-  }
-}
+export default class MainLayout extends Vue {}
 </script>

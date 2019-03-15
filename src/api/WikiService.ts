@@ -1,4 +1,4 @@
-import HttpService from '@/http/HttpService';
+import HttpService from '@/api/HttpService';
 import IGetPagesResponse from '@/types';
 
 export default class WikiService {

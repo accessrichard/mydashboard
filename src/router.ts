@@ -42,6 +42,24 @@ export default new Router({
       name: 'todo',
       component: () =>
         import(/* webpackChunkName: 'links' */ './views/todo/Todo.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: () =>
+        import(/* webpackChunkName: 'links' */ './views/contact/ContactList.vue')
+    },
+    {
+      path: '/contact/:name',
+      name: 'contact-card',
+      component: () =>
+        import(/* webpackChunkName: 'links' */ './views/contact/ContactCard.vue')
+    },
+    {
+      path: '/contact/edit/:name',
+      name: 'contact-card-edit',
+      component: () =>
+        import(/* webpackChunkName: 'links' */ './views/contact/ContactEdit.vue')
     }
   ]
 });

@@ -33,3 +33,14 @@ export interface ITodo {
   title: string;
   type: string;
 }
+
+export interface IContact {
+  name: string;
+  cellPhone: string;
+  workPhone: string;
+  email: string;
+  link: string;
+  color: string;
+  isFavorite: boolean;
+  lastupdate: Date;
+}
