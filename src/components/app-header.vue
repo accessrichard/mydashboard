@@ -6,6 +6,7 @@
     <v-toolbar-items class="hidden-sm-and-down">
       <quick-links></quick-links>
     </v-toolbar-items>
+    <v-toolbar-side-icon v-on:click.stop="toggleWikiSidebar()"></v-toolbar-side-icon>
   </v-toolbar>
 </template>
 
@@ -26,5 +27,11 @@ export default class AppHeader extends Vue {
       visible: !this.$store.state.layout.leftSidebar.visible
     });
   }
+
+   public toggleWikiSidebar() {
+    this.$store.dispatch("layout/toggleWikiSidebar", {
+      visible: !this.$store.state.layout.wikiSidebar.visible
+    });
+   }
 }
 </script>

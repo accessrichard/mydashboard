@@ -4,7 +4,6 @@
     <app-header></app-header>
     <app-sidebar></app-sidebar>
     <app-content></app-content>
-    <app-footer></app-footer>
   </v-app>
 </template>
 <script lang="ts">
@@ -12,7 +11,6 @@ import AppHeader from "@/components/app-header.vue";
 import AppWikibar from "@/components/app-wikibar.vue";
 import AppSidebar from "@/components/app-sidebar.vue";
 import AppContent from "@/components/app-content.vue";
-import AppFooter from "@/components/app-footer.vue";
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { Route } from "vue-router";
 
@@ -23,7 +21,6 @@ import { Route } from "vue-router";
     AppWikibar,
     AppSidebar,
     AppContent,
-    AppFooter
   }
 })
 export default class MainLayout extends Vue {}
