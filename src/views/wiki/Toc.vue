@@ -3,7 +3,7 @@
     <v-list dense>
       <v-list-tile
         v-for="(page, i) in pages"
-        :key="i"
+        :key="page + i"
         :to="{ name: 'wiki-read', params: { page: page }}"
       >
         <v-list-tile-content>
@@ -24,22 +24,20 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import WikiService from "@/api/WikiService";
+import wikiStore from "@/store/modules/WikiStore";
 import router from "@/router";
 import { Route } from "vue-router";
 
 @Component
 export default class WikRead extends Vue {
-  public pages: string[] = [];
-  public newPageName: string = "";
-  private service: WikiService;
-  constructor() {
-    super();
-    this.service = new WikiService();
+  get pages(): string[] {
+    return wikiStore.pages;
   }
 
-  get createNewPage(): string {
-    return this.newPageName;
+  public newPageName: string = "";
+
+  constructor() {
+    super();
   }
 
   public toEdit(): void {
@@ -53,10 +51,8 @@ export default class WikRead extends Vue {
     this.newPageName = "";
   }
 
-  public mounted() {
-    this.service.getPages().then(pages => {
-      this.pages = pages;
-    });
+  public created() {
+    wikiStore.getPages();
   }
 }
 </script>

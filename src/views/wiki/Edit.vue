@@ -12,15 +12,27 @@ import MarkdownEditor from "@/components/editor/markdown-editor.vue";
 import { Component, Vue } from "vue-property-decorator";
 import WikiPage from "./WikiPage";
 import router from "@/router";
+import { Route } from "vue-router";
+import marked from "marked";
+import wikiStore from "@/store/modules/WikiStore";
+
+Component.registerHooks(["beforeRouteUpdate"]);
 
 @Component({
   components: {
     MarkdownEditor
   }
 })
-export default class Edit extends WikiPage {
+export default class Edit extends Vue {
+  public content: string = "";
+
   constructor() {
     super();
+  }
+
+  public beforeRouteUpdate(to: Route, from: Route, next: any) {
+    this.load();
+    next();
   }
 
   public toToc(): void {
@@ -29,23 +41,27 @@ export default class Edit extends WikiPage {
     });
   }
 
-  public save(content: string) {
-    this.saveMarkdown(content).then(() => {
-      router.push({
-        name: "wiki-read",
-        params: {
-          page: this.getPageName()
-        }
-      });
+  public async save(content: string) {
+    const page = this.$route.params.page;
+    await wikiStore.savePage({ page, content });
+
+    this.content = "";
+
+    router.push({
+      name: "wiki-read",
+      params: {
+        page: this.$route.params.page
+      }
     });
   }
 
-  public mounted() {
-    this.getMarkdownContent(this.getPageName()).then(content => {
-      this.content = content;
-    }).catch((err) => {
-      this.content = "# Create New Page\n\n Your page was not found.";
-    });
+  public created() {
+    this.load();
+  }
+
+  private async load() {
+    await wikiStore.getPage(this.$route.params.page);
+    this.content = wikiStore.selectedPageContent;
   }
 }
 </script>

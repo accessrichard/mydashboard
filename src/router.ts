@@ -29,37 +29,37 @@ export default new Router({
       path: '/wiki/read/:page',
       name: 'wiki-read',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/wiki/Read.vue')
+        import(/* webpackChunkName: 'read' */ './views/wiki/Read.vue')
     },
     {
       path: '/wiki/toc',
       name: 'wiki-toc',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/wiki/Toc.vue')
+        import(/* webpackChunkName: 'toc' */ './views/wiki/Toc.vue')
     },
     {
       path: '/todo',
       name: 'todo',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/todo/Todo.vue')
+        import(/* webpackChunkName: 'todo' */ './views/todo/Todo.vue')
     },
     {
       path: '/contact',
       name: 'contact',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/contact/ContactList.vue')
+        import(/* webpackChunkName: 'contact' */ './views/contact/ContactList.vue')
     },
     {
       path: '/contact/:name',
       name: 'contact-card',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/contact/ContactCard.vue')
+        import(/* webpackChunkName: 'contact-card' */ './views/contact/ContactCard.vue')
     },
     {
       path: '/contact/edit/:name',
       name: 'contact-card-edit',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/contact/ContactEdit.vue')
+        import(/* webpackChunkName: 'contact-card-edit' */ './views/contact/ContactEdit.vue')
     }
   ]
 });

@@ -13,13 +13,19 @@ import MarkdownEditor from "@/components/editor/markdown-editor.vue";
 import marked from "marked";
 import router from "@/router";
 import { Route } from "vue-router";
+import wikiStore from "@/store/modules/WikiStore";
+
 
 Component.registerHooks(["beforeRouteUpdate"]);
 
 @Component
-export default class Read extends WikiPage {
+export default class Read extends Vue {
   constructor() {
     super();
+  }
+
+  get content(): string {
+    return marked(wikiStore.selectedPageContent, {sanitize: true});
   }
 
   public beforeRouteUpdate(to: Route, from: Route, next: any) {
@@ -31,19 +37,18 @@ export default class Read extends WikiPage {
     router.push({
       name: "wiki-edit",
       params: {
-        page: this.getPageName()
+        page: this.$route.params.page
       }
     });
   }
 
   public reloadContent(pageName: string): void {
-    this.getHtmlContent(pageName).then(content => {
-      this.content = content;
-    });
+      wikiStore.getPage(pageName);
   }
 
-  public mounted(): void {
-    this.reloadContent(this.getPageName());
+  public created(): void {
+    console.log("created");
+    this.reloadContent(this.$route.params.page);
   }
 }
 </script>

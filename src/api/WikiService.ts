@@ -31,4 +31,12 @@ export default class WikiService {
         return resp.data;
       });
   }
+
+  public removePage(name: string): Promise<string> {
+    return this.httpService
+      .delete(this.basePath + name)
+      .then(resp => {
+        return name;
+      });
+  }
 }

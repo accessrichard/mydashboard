@@ -19,6 +19,10 @@ class Contact extends VuexModule {
 
   @Action({ commit: 'GET_CONTACTS' })
   public async getContacts(): Promise<IContact[]> {
+    if (this.contacts.length > 0) {
+      return this.contacts;
+    }
+
     const contacts = await service.list();
     return contacts;
   }
@@ -32,11 +36,9 @@ class Contact extends VuexModule {
     const contact = this.contacts.filter(x => x.name === name);
 
     if (contact.length === 0) {
-      // return Promise.resolve({ lastupdate: new Date() } as IContact);
       return { lastupdate: new Date() } as IContact;
     }
 
-    // return Promise.resolve(contact[0]);
     return contact[0];
   }
 

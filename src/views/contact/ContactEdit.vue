@@ -92,7 +92,7 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
-import contactStore from "@/store/modules/ContactModule";
+import contactStore from "@/store/modules/ContactStore";
 import { IContact } from "@/types";
 import router from "@/router";
 

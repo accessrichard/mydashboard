@@ -17,6 +17,10 @@ class Todo extends VuexModule {
 
   @Action({ commit: 'GET_TODOS' })
   public async getTodos(): Promise<ITodo[]> {
+    if (this.todos.length > 0) {
+      return this.todos;
+    }
+
     const todos = await service.getTodos();
     return todos;
   }

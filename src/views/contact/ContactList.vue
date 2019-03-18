@@ -40,7 +40,7 @@
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import { IContact } from "@/types";
-import contactStore from "@/store/modules/ContactModule";
+import contactStore from "@/store/modules/ContactStore";
 
 @Component
 export default class ContactList extends Vue {

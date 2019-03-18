@@ -46,14 +46,13 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
-import TodoService from "@/api/TodoService";
-import todoStore from "@/store/modules/TodoModule";
+import todoStore from "@/store/modules/TodoStore";
 import { ITodo } from "@/types";
 
 @Component
 export default class Todo extends Vue {
   get todos(): ITodo[] {
-    return todoStore.todos;
+    return todoStore.todos || [] as ITodo[];
   }
 
   public types: string[] = ["text", "external"];
