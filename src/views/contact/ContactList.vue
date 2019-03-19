@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex>
       <v-card>
         <v-toolbar color="indigo" dark>
           <v-toolbar-side-icon></v-toolbar-side-icon>
@@ -9,8 +9,8 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn icon>
-            <v-icon>search</v-icon>
+          <v-btn icon v-on:click="add()">
+            <v-icon>control_point</v-icon>
           </v-btn>
         </v-toolbar>
         <v-list subheader>
@@ -40,11 +40,11 @@
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import { IContact } from "@/types";
+import router from "@/router";
 import contactStore from "@/store/modules/ContactStore";
 
 @Component
 export default class ContactList extends Vue {
-
   get contacts(): IContact[] {
     return contactStore.contacts;
   }
@@ -53,8 +53,12 @@ export default class ContactList extends Vue {
     super();
   }
 
+  public add() {
+    router.push({ name: "contact-card-edit", params: { name: "New Contact" } });
+  }
+
   public mounted() {
-   contactStore.getContacts();
+    contactStore.getContacts();
   }
 }
 </script>

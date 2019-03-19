@@ -4,12 +4,14 @@
   </v-layout>
   <v-layout row v-else>
     <v-flex xs12 sm6 offset-sm3>
-      <v-card :key="contact.lastupdate.toString()">
+      <v-card :key="contact.name + contact.id + contact.lastupdate">
         <v-img src="https://cdn.vuetifyjs.com/images/lists/ali.png" height="300px">
           <v-layout column fill-height>
             <v-card-title>
               <v-spacer></v-spacer>
-
+              <v-btn dark icon class="mr-3" :to="{ name: 'contact'}">
+                <v-icon>chevron_left</v-icon>
+              </v-btn>
               <v-btn
                 dark
                 icon

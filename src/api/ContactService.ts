@@ -11,7 +11,15 @@ export default class ContactService {
   }
 
   public async get(name: string): Promise<IContact> {
-    return this.httpService.get<IContact>(`${this.basePath}/${name}`).then(resp => {
+    return this.httpService
+      .get<IContact>(`${this.basePath}/${name}`)
+      .then(resp => {
+        return resp.data;
+      });
+  }
+
+  public async delete(id: number): Promise<void> {
+    return this.httpService.delete(`${this.basePath}/${id}`).then(resp => {
       return resp.data;
     });
   }
@@ -22,11 +30,10 @@ export default class ContactService {
     });
   }
 
-  public save(contact: IContact) {
-    return this.httpService
-      .post(this.basePath, { contact })
-      .then(resp => {
-        return resp.data;
-      });
+  public async save(contact: IContact): Promise<IContact[]> {
+    return this.httpService.post(this.basePath, { contact }).then(resp => {
+      console.log(resp);
+      return resp.data.contact;
+    });
   }
 }

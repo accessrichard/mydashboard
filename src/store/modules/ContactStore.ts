@@ -27,6 +27,7 @@ class Contact extends VuexModule {
     return contacts;
   }
 
+  //// TODO: Name is non-unique
   @Action({ commit: 'GET_CONTACT' })
   public async getContact(name: string): Promise<IContact> {
     if (this.contacts.length === 0) {
@@ -42,9 +43,10 @@ class Contact extends VuexModule {
     return contact[0];
   }
 
-  @Action({ commit: 'REMOVE_CONTACT' })
-  public async removeContact(contact: IContact) {
-    throw Error('NotImplemented');
+  @Action({ commit: 'DELETE_CONTACT' })
+  public async delete(contact: IContact) {
+    await service.delete(contact.id);
+    return contact.name;
   }
 
   @Action({ commit: 'SAVE_CONTACT' })
@@ -52,6 +54,24 @@ class Contact extends VuexModule {
     return service.save(contact).then(newContact => {
       return newContact;
     });
+  }
+
+  @Action({ commit: 'CREATE_NEW' })
+  public create(name: string) {
+    return name;
+  }
+
+  @Mutation
+  public CREATE_NEW(name: string) {
+    this.selectedContact.name = name;
+    this.selectedContact.lastupdate = new Date();
+    this.selectedContact.id = 0;
+  }
+
+  @Mutation
+  public DELETE_CONTACT(id: number) {
+    this.selectedContact = {} as IContact;
+    this.removeContact(id);
   }
 
   @Mutation
@@ -66,25 +86,32 @@ class Contact extends VuexModule {
 
   @Mutation
   public SAVE_CONTACT(contact: IContact) {
+    const isExisting = this.contacts.find(c => {
+      return c.name === contact.name;
+    });
+
+    if (isExisting) {
+      this.removeContact(contact.id);
+    }
+
     this.contacts.push(contact);
   }
 
-  @Mutation
-  public REMOVE_CONTACT(contact: IContact) {
-    const index = this.getIndex(contact.name);
+  private getIndex(id: number): number {
+    return this.contacts
+      .map(contactItem => {
+        return contactItem.id;
+      })
+      .indexOf(id);
+  }
+
+  private removeContact(id: number) {
+    const index = this.getIndex(id);
     if (index === -1) {
       return;
     }
 
     this.contacts.splice(index, 1);
-  }
-
-  private getIndex(name: string): number {
-    return this.contacts
-      .map(contactItem => {
-        return contactItem.name;
-      })
-      .indexOf(name);
   }
 }
 

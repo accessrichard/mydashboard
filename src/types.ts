@@ -43,4 +43,5 @@ export interface IContact {
   color: string;
   isFavorite: boolean;
   lastupdate: Date;
+  id: number;
 }
