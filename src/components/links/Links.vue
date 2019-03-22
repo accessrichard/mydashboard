@@ -19,7 +19,7 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
-import mockLinks from "@/views/links/links.mock";
+import mockLinks from "@/components/links/links.mock";
 import { ILinks } from "@/types";
 
 @Component

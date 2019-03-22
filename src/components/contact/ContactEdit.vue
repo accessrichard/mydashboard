@@ -118,10 +118,9 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Prop, Vue } from "vue-property-decorator";
-import contactStore from "@/store/modules/ContactStore";
+import contactStore from "@/components/contact/ContactStore";
 import { IContact, CONTACT_VIEW } from "@/types";
-import router from "@/router";
-import getRouter from "./ContactRouter";
+import { getRouter } from "./ContactRouter";
 
 @Component
 export default class ContactEdit extends Vue {

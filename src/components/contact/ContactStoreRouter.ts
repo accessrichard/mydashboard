@@ -1,5 +1,5 @@
 import { CONTACT_VIEW, IContactRouter } from '@/types';
-import contactStore from '@/store/modules/ContactStore';
+import contactStore from '@/components/contact/ContactStore';
 
 export default class ContactStoreRouter implements IContactRouter {
   public edit(name: string): void {

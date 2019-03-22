@@ -19,7 +19,7 @@
 
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
-import TodoList from "@/views/todo/TodoList.vue";
+import TodoList from "@/components/todo/TodoList.vue";
 
 @Component({
   name: "Todo",

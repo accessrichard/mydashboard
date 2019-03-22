@@ -23,9 +23,8 @@
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import { IContact, CONTACT_VIEW } from "@/types";
-import router from "@/router";
-import contactStore from "@/store/modules/ContactStore";
-import getRoute from "./ContactRouter";
+import contactStore from "@/components/contact/ContactStore";
+import { getRouter } from "./ContactRouter";
 
 @Component
 export default class ContactList extends Vue {
@@ -34,12 +33,12 @@ export default class ContactList extends Vue {
   }
 
   public add() {
-    getRoute().edit("New Contact");
+    getRouter().edit("New Contact");
   }
 
   public async viewContact(name: string) {
     await contactStore.getContact(name);
-    getRoute().view(name);
+    getRouter().view(name);
   }
 
   public async mounted() {

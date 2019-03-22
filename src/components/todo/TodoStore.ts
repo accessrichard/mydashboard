@@ -5,7 +5,7 @@ import {
   Action,
   getModule
 } from 'vuex-module-decorators';
-import TodoService from '@/api/TodoService';
+import TodoService from '@/components/todo/TodoService';
 import { ITodo } from '@/types';
 import store from '@/store';
 

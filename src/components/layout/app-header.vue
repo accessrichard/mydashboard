@@ -13,7 +13,7 @@
 
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
-import QuickLinks from './quick-links.vue';
+import QuickLinks from '@/components/links/quick-links.vue';
 
 @Component({
   components: {

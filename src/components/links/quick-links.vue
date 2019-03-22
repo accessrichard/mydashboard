@@ -18,7 +18,7 @@
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { ILink } from '@/types';
-import mock from "./quick-links.mock";
+import mock from "@/components/links/quick-links.mock";
 
 @Component
 export default class QuickLinks extends Vue {

@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import marked from 'marked';
-import WikiService from '@/api/WikiService';
+import WikiService from '@/components/wiki/WikiService';
 
 export default class PageMixin extends Vue {
   public content: string = '';

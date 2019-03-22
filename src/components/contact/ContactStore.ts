@@ -5,7 +5,7 @@ import {
   Action,
   getModule
 } from 'vuex-module-decorators';
-import ContactService from '@/api/ContactService';
+import ContactService from '@/components/contact/ContactService';
 import { IContact } from '@/types';
 import store from '@/store';
 

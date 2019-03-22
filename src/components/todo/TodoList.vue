@@ -30,7 +30,7 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
-import todoStore from "@/store/modules/TodoStore";
+import todoStore from "@/components/todo/TodoStore";
 import { ITodo } from "@/types";
 
 @Component

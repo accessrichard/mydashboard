@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import wikiStore from "@/store/modules/WikiStore";
+import wikiStore from "@/components/wiki/WikiStore";
 import router from "@/router";
 import { Route } from "vue-router";
 

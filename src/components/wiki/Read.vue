@@ -8,12 +8,12 @@
 <script lang="ts">
 import { Component, Mixins, Prop, Vue } from "vue-property-decorator";
 import WikiPage from "./WikiPage";
-import WikiService from "@/api/WikiService";
-import MarkdownEditor from "@/components/editor/markdown-editor.vue";
+import WikiService from "@/components/wiki/WikiService";
+import MarkdownEditor from "@/components/wiki/markdown-editor.vue";
 import marked from "marked";
 import router from "@/router";
 import { Route } from "vue-router";
-import wikiStore from "@/store/modules/WikiStore";
+import wikiStore from "@/components/wiki/WikiStore";
 
 Component.registerHooks(["beforeRouteUpdate"]);
 

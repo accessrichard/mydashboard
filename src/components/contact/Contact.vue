@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex>
       <v-card>
         <v-toolbar color="primary" dark>
           <v-toolbar-side-icon></v-toolbar-side-icon>
@@ -13,7 +13,7 @@
             <v-icon>control_point</v-icon>
           </v-btn>
         </v-toolbar>
-        <component v-bind:is="currentContactView"></component>
+        <contact-list></contact-list>
       </v-card>
     </v-flex>
   </v-layout>
@@ -24,33 +24,21 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
-import { IContact, CONTACT_VIEW } from "@/types";
+import { IContact } from "@/types";
 import router from "@/router";
-import contactStore from "@/store/modules/ContactStore";
-import ContactList from "@/views/contact/ContactList.vue";
-import ContactCard from "@/views/contact/ContactCard.vue";
-import ContactEdit from "@/views/contact/ContactEdit.vue";
+import contactStore from "@/components/contact/ContactStore";
+import ContactList from "@/components/contact/ContactList.vue";
+import { getRouter } from "@/components/contact/ContactRouter";
 
 @Component({
   name: "Contact",
   components: {
-    ContactList,
-    ContactCard,
-    ContactEdit
+    ContactList
   }
 })
 export default class Contact extends Vue {
-  public get currentContactView(): string {
-    if (!contactStore.view) {
-      return CONTACT_VIEW.LIST;
-    }
-
-    return contactStore.view;
-  }
-
   public addContact() {
-    contactStore.create("New Contact");
-    contactStore.setView(CONTACT_VIEW.EDIT);
+    getRouter().edit("New Contact");
   }
 }
 </script>

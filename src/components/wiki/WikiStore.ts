@@ -5,7 +5,7 @@ import {
   Action,
   getModule
 } from 'vuex-module-decorators';
-import WikiService from '@/api/WikiService';
+import WikiService from '@/components/wiki/WikiService';
 import store from '@/store';
 
 const service = new WikiService();

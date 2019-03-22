@@ -8,13 +8,13 @@
 </template>
 
 <script lang="ts">
-import MarkdownEditor from "@/components/editor/markdown-editor.vue";
+import MarkdownEditor from "@/components/wiki/markdown-editor.vue";
 import { Component, Vue } from "vue-property-decorator";
 import WikiPage from "./WikiPage";
 import router from "@/router";
 import { Route } from "vue-router";
 import marked from "marked";
-import wikiStore from "@/store/modules/WikiStore";
+import wikiStore from "@/components/wiki/WikiStore";
 
 Component.registerHooks(["beforeRouteUpdate"]);
 

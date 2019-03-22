@@ -13,10 +13,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Toc from "@/views/wiki/Toc.vue";
-import Todo from "@/views/todo/Todo.vue";
-import ContactView from "@/views/contact/ContactView.vue";
-import Read from "@/views/wiki/Read.vue";
+import Toc from "@/components/wiki/Toc.vue";
+import Todo from "@/components/todo/Todo.vue";
+import ContactView from "@/components/contact/ContactView.vue";
+import Read from "@/components/wiki/Read.vue";
 
 @Component({
   name: "Home",

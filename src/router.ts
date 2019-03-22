@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/home/Home.vue';
+import Home from '@/components/home/Home.vue';
 
 Vue.use(Router);
 
@@ -17,49 +17,49 @@ const router = new Router({
       path: '/links',
       name: 'links',
       component: () =>
-        import(/* webpackChunkName: 'wiki' */ './views/links/Links.vue')
+        import(/* webpackChunkName: 'wiki' */ '@/components/links/Links.vue')
     },
     {
       path: '/wiki/edit/:page',
       name: 'wiki-edit',
       component: () =>
-        import(/* webpackChunkName: 'wiki' */ './views/wiki/Edit.vue')
+        import(/* webpackChunkName: 'wiki' */ '@/components/wiki/Edit.vue')
     },
     {
       path: '/wiki/read/:page',
       name: 'wiki-read',
       component: () =>
-        import(/* webpackChunkName: 'wiki' */ './views/wiki/Read.vue')
+        import(/* webpackChunkName: 'wiki' */ '@/components/wiki/Read.vue')
     },
     {
       path: '/wiki/toc',
       name: 'wiki-toc',
       component: () =>
-        import(/* webpackChunkName: 'wiki' */ './views/wiki/Toc.vue')
+        import(/* webpackChunkName: 'wiki' */ '@/components/wiki/Toc.vue')
     },
     {
       path: '/todo',
       name: 'todo',
       component: () =>
-        import(/* webpackChunkName: 'todo' */ './views/todo/Todo.vue')
+        import(/* webpackChunkName: 'todo' */ '@/components/todo/Todo.vue')
     },
     {
       path: '/contact',
       name: 'contact-list',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ './views/contact/Contact.vue')
+        import(/* webpackChunkName: 'contact' */ '@/components/contact/Contact.vue')
     },
     {
       path: '/contact/:name',
       name: 'contact-view',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ './views/contact/ContactCard.vue')
+        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactCard.vue')
     },
     {
       path: '/contact/edit/:name',
       name: 'contact-edit',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ './views/contact/ContactEdit.vue')
+        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactEdit.vue')
     }
   ]
 });

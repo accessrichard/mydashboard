@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
-import layout from '@/store/modules/LayoutStore';
+import layout from '@/components/layout/LayoutStore';
 import { IRootState } from '@/types';
 
 Vue.use(Vuex);

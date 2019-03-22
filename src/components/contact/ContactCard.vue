@@ -81,10 +81,9 @@
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue, Prop } from "vue-property-decorator";
-import contactStore from "@/store/modules/ContactStore";
+import contactStore from "@/components/contact/ContactStore";
 import { IContact, IContactRouter, CONTACT_VIEW } from "@/types";
-import router from "@/router";
-import getRouter from "./ContactRouter";
+import { getRouter } from "./ContactRouter";
 
 @Component
 export default class ContactCard extends Vue {

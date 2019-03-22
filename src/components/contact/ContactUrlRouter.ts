@@ -1,5 +1,5 @@
 import { IContact, IContactRouter, CONTACT_VIEW } from '@/types';
-import contactStore from '@/store/modules/ContactStore';
+import contactStore from '@/components/contact/ContactStore';
 import router from "@/router";
 
 

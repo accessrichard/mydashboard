@@ -3,14 +3,17 @@ import router from '@/router';
 import ContactStoreRouter from './ContactStoreRouter';
 import ContactUrlRouter from './ContactUrlRouter';
 
-export default function getRouter(): IContactRouter {
+const urlRouter = new ContactUrlRouter();
+const storeRouter = new ContactStoreRouter();
+
+export function getRouter(): IContactRouter {
   if (
     router.currentRoute.name !== undefined &&
     router.currentRoute.name.length > 0 &&
     router.currentRoute.name.startsWith('contact')
   ) {
-    return new ContactUrlRouter();
+    return urlRouter;
   }
 
-  return new ContactStoreRouter();
+  return storeRouter;
 }

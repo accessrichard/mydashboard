@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Toc from "@/views/wiki/Toc.vue";
+import Toc from "@/components/wiki/Toc.vue";
 
 @Component({
   name: "AppWikibar",
