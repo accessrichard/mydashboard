@@ -1,5 +1,5 @@
  <template>
-  <v-toolbar color="indigo" dark fixed app>
+  <v-toolbar color="primary" dark fixed app>
     <v-toolbar-side-icon v-on:click.stop="toggleLeftSidebar()"></v-toolbar-side-icon>
     <v-toolbar-title>Dashboard</v-toolbar-title>
     <v-spacer></v-spacer>

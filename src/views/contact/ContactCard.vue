@@ -3,21 +3,16 @@
     <v-progress-circular></v-progress-circular>
   </v-layout>
   <v-layout row v-else>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex>
       <v-card :key="contact.name + contact.id + contact.lastupdate">
         <v-img src="https://cdn.vuetifyjs.com/images/lists/ali.png" height="300px">
           <v-layout column fill-height>
             <v-card-title>
               <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3" :to="{ name: 'contact'}">
+              <v-btn dark icon class="mr-3" v-on:click="back()">
                 <v-icon>chevron_left</v-icon>
               </v-btn>
-              <v-btn
-                dark
-                icon
-                class="mr-3"
-                :to="{ name: 'contact-card-edit', params: { name: contact.name }}"
-              >
+              <v-btn dark icon class="mr-3" v-on:click="edit()">
                 <v-icon>edit</v-icon>
               </v-btn>
             </v-card-title>
@@ -33,7 +28,7 @@
         <v-list two-line>
           <v-list-tile>
             <v-list-tile-action>
-              <v-icon color="indigo">phone</v-icon>
+              <v-icon color="primary">phone</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -55,7 +50,7 @@
 
           <v-list-tile :href="`mailto:${contact.email}`">
             <v-list-tile-action>
-              <v-icon color="indigo">mail</v-icon>
+              <v-icon color="primary">mail</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -66,7 +61,7 @@
 
           <v-list-tile v-on:click="openLink()">
             <v-list-tile-action>
-              <v-icon color="indigo">link</v-icon>
+              <v-icon color="primary">link</v-icon>
             </v-list-tile-action>
 
             <v-list-tile-content>
@@ -85,30 +80,48 @@
 
 <script lang='ts'>
 import { mapGetters } from "vuex";
-import { Component, Vue } from "vue-property-decorator";
-import ContactService from "@/api/ContactService";
-import { IContact } from "@/types";
+import { Component, Vue, Prop } from "vue-property-decorator";
+import contactStore from "@/store/modules/ContactStore";
+import { IContact, IContactRouter, CONTACT_VIEW } from "@/types";
+import router from "@/router";
+import getRouter from "./ContactRouter";
 
 @Component
 export default class ContactCard extends Vue {
-  public contact: IContact = {} as IContact;
-  public isloading: boolean = true;
-  public service: ContactService;
-
-  constructor() {
-    super();
-    this.service = new ContactService();
+  get contact(): IContact {
+    return contactStore.selectedContact;
   }
+
+  public isloading: boolean = true;
+
+  private contactRouter: IContactRouter = getRouter();
 
   public openLink() {
-    window.open(this.contact.link, "_blank");
+    if (this.contact.link) {
+      window.open(this.contact.link, "_blank");
+    }
   }
 
-  public mounted() {
-    this.service.get(this.$route.params.name).then((contact: IContact) => {
-      this.contact = contact;
-      this.isloading = false;
-    });
+  public edit() {
+    getRouter().edit(this.contact.name);
+  }
+
+  public back() {
+    getRouter().list();
+  }
+
+  public async mounted() {
+    if (this.isRoute()) {
+      await contactStore.getContact(this.$route.params.name);
+    }
+
+    this.isloading = false;
+  }
+
+  private isRoute(): boolean {
+    return (
+      this.$route.name !== undefined && this.$route.name.startsWith("contact")
+    );
   }
 }
 </script>

@@ -32,7 +32,6 @@ export default class ContactService {
 
   public async save(contact: IContact): Promise<IContact[]> {
     return this.httpService.post(this.basePath, { contact }).then(resp => {
-      console.log(resp);
       return resp.data.contact;
     });
   }

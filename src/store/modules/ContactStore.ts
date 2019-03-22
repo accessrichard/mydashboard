@@ -17,6 +17,13 @@ class Contact extends VuexModule {
 
   public selectedContact: IContact = {} as IContact;
 
+  public view: string = 'contact-list';
+
+  @Action({ commit: 'CHANGE_VIEW' })
+  public setView(view: string) {
+    return view;
+  }
+
   @Action({ commit: 'GET_CONTACTS' })
   public async getContacts(): Promise<IContact[]> {
     if (this.contacts.length > 0) {
@@ -66,6 +73,15 @@ class Contact extends VuexModule {
     this.selectedContact.name = name;
     this.selectedContact.lastupdate = new Date();
     this.selectedContact.id = 0;
+  }
+
+  @Mutation
+  public CHANGE_VIEW(view: string) {
+    if (this.view === view) {
+      return;
+    }
+
+    this.view = view;
   }
 
   @Mutation

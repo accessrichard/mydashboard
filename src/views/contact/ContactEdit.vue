@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex>
       <v-card :key="contact.id + contact.lastupdate">
         <form>
           <v-img src="https://cdn.vuetifyjs.com/images/lists/ali.png" height="300px">
@@ -8,12 +8,7 @@
               <v-card-title>
                 <v-spacer></v-spacer>
 
-                <v-btn
-                  dark
-                  icon
-                  class="mr-3"
-                  :to="{ name: 'contact-card', params: { name: contact.name }}"
-                >
+                <v-btn dark icon class="mr-3" v-on:click="back()">
                   <v-icon>chevron_left</v-icon>
                 </v-btn>
               </v-card-title>
@@ -122,17 +117,18 @@
 
 <script lang='ts'>
 import { mapGetters } from "vuex";
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import contactStore from "@/store/modules/ContactStore";
-import { IContact } from "@/types";
+import { IContact, CONTACT_VIEW } from "@/types";
 import router from "@/router";
+import getRouter from "./ContactRouter";
 
 @Component
 export default class ContactEdit extends Vue {
   public contact: IContact = { lastupdate: new Date() } as IContact;
 
-  constructor() {
-    super();
+  public back() {
+    getRouter().view(this.contact.name);
   }
 
   public async remove() {
@@ -140,7 +136,7 @@ export default class ContactEdit extends Vue {
       await contactStore.delete(this.contact);
     }
 
-    router.push({ name: "contact" });
+    getRouter().list();
   }
 
   public async save() {
@@ -152,13 +148,15 @@ export default class ContactEdit extends Vue {
     }
 
     contactStore.save(this.contact);
-    router.push({ name: "contact-card", params: { name: this.contact.name } });
+    getRouter().view(this.contact.name);
   }
 
   public async mounted() {
-    await contactStore.getContact(this.$route.params.name);
-    if (!contactStore.selectedContact.id || contactStore.selectedContact.id === 0) {
-      contactStore.create(this.$route.params.name);
+    if (
+      !contactStore.selectedContact.id ||
+      contactStore.selectedContact.id === 0
+    ) {
+      contactStore.create("New Contact");
     }
 
     this.contact = contactStore.selectedContact;

@@ -4,9 +4,8 @@
       <v-flex text-xs-center fill-height>
         <todo></todo>
         <Read v-bind:page="page"></Read>
-        <contact-list></contact-list>
+        <contact-view></contact-view>
         <Toc></Toc>
-        
       </v-flex>
     </v-layout>
   </v-container>
@@ -16,20 +15,19 @@
 import { Component, Vue } from "vue-property-decorator";
 import Toc from "@/views/wiki/Toc.vue";
 import Todo from "@/views/todo/Todo.vue";
-import ContactList from "@/views/contact/ContactList.vue";
+import ContactView from "@/views/contact/ContactView.vue";
 import Read from "@/views/wiki/Read.vue";
 
 @Component({
   name: "Home",
   components: {
     Todo,
-    Toc,
-    ContactList,
-    Read
+    ContactView,
+    Read,
+    Toc
   }
 })
 export default class Home extends Vue {
   public page: string = "Home";
-
 }
 </script>

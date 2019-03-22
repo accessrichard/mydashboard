@@ -65,7 +65,6 @@ class Wiki extends VuexModule {
       return;
     }
 
-    console.log(page);
     this.pages.push(page);
   }
 

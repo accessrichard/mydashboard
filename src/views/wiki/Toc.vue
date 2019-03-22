@@ -29,7 +29,7 @@ import router from "@/router";
 import { Route } from "vue-router";
 
 @Component
-export default class WikRead extends Vue {
+export default class Toc extends Vue {
   get pages(): string[] {
     return wikiStore.pages;
   }

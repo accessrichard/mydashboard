@@ -45,3 +45,15 @@ export interface IContact {
   lastupdate: Date;
   id: number;
 }
+
+export const CONTACT_VIEW = {
+  LIST: 'contact-list',
+  EDIT: 'contact-edit',
+  VIEW: 'contact-card'
+};
+
+export interface IContactRouter {
+  list(): void;
+  edit(name: string): void;
+  view(name: string): void;
+}

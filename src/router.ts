@@ -4,7 +4,7 @@ import Home from './views/home/Home.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -17,25 +17,25 @@ export default new Router({
       path: '/links',
       name: 'links',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/links/Links.vue')
+        import(/* webpackChunkName: 'wiki' */ './views/links/Links.vue')
     },
     {
       path: '/wiki/edit/:page',
       name: 'wiki-edit',
       component: () =>
-        import(/* webpackChunkName: 'links' */ './views/wiki/Edit.vue')
+        import(/* webpackChunkName: 'wiki' */ './views/wiki/Edit.vue')
     },
     {
       path: '/wiki/read/:page',
       name: 'wiki-read',
       component: () =>
-        import(/* webpackChunkName: 'read' */ './views/wiki/Read.vue')
+        import(/* webpackChunkName: 'wiki' */ './views/wiki/Read.vue')
     },
     {
       path: '/wiki/toc',
       name: 'wiki-toc',
       component: () =>
-        import(/* webpackChunkName: 'toc' */ './views/wiki/Toc.vue')
+        import(/* webpackChunkName: 'wiki' */ './views/wiki/Toc.vue')
     },
     {
       path: '/todo',
@@ -45,21 +45,23 @@ export default new Router({
     },
     {
       path: '/contact',
-      name: 'contact',
+      name: 'contact-list',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ './views/contact/ContactList.vue')
+        import(/* webpackChunkName: 'contact' */ './views/contact/Contact.vue')
     },
     {
       path: '/contact/:name',
-      name: 'contact-card',
+      name: 'contact-view',
       component: () =>
-        import(/* webpackChunkName: 'contact-card' */ './views/contact/ContactCard.vue')
+        import(/* webpackChunkName: 'contact' */ './views/contact/ContactCard.vue')
     },
     {
       path: '/contact/edit/:name',
-      name: 'contact-card-edit',
+      name: 'contact-edit',
       component: () =>
-        import(/* webpackChunkName: 'contact-card-edit' */ './views/contact/ContactEdit.vue')
+        import(/* webpackChunkName: 'contact' */ './views/contact/ContactEdit.vue')
     }
   ]
 });
+
+export default router;
