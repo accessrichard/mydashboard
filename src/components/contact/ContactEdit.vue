@@ -120,7 +120,7 @@ import { mapGetters } from "vuex";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import contactStore from "@/components/contact/ContactStore";
 import { IContact, CONTACT_VIEW } from "@/types";
-import { getRouter } from "./ContactRouter";
+import { getRouter } from "@/components/contact/contact-router";
 
 @Component
 export default class ContactEdit extends Vue {
@@ -146,7 +146,7 @@ export default class ContactEdit extends Vue {
       await contactStore.delete(contactStore.selectedContact);
     }
 
-    contactStore.save(this.contact);
+    await contactStore.save(this.contact);
     getRouter().view(this.contact.name);
   }
 

@@ -16,7 +16,7 @@ export default class ContactStoreRouter implements IContactRouter {
 
   private setView(view: string) {
     if (!this.isContactSet()) {
-      contactStore.setView(CONTACT_VIEW.VIEW);
+      contactStore.setView(CONTACT_VIEW.LIST);
       return;
     }
 

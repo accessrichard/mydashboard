@@ -34,7 +34,6 @@ class Contact extends VuexModule {
     return contacts;
   }
 
-  //// TODO: Name is non-unique
   @Action({ commit: 'GET_CONTACT' })
   public async getContact(name: string): Promise<IContact> {
     if (this.contacts.length === 0) {
@@ -52,7 +51,7 @@ class Contact extends VuexModule {
 
   @Action({ commit: 'DELETE_CONTACT' })
   public async delete(contact: IContact) {
-    await service.delete(contact.id);
+    await service.delete(contact.name);
     return contact.name;
   }
 
@@ -77,17 +76,18 @@ class Contact extends VuexModule {
 
   @Mutation
   public CHANGE_VIEW(view: string) {
-    if (this.view === view) {
-      return;
-    }
-
     this.view = view;
   }
 
   @Mutation
-  public DELETE_CONTACT(id: number) {
-    this.selectedContact = {} as IContact;
-    this.removeContact(id);
+  public DELETE_CONTACT(name: string) {
+    this.selectedContact = { name: 'New Contact' } as IContact;
+
+    const existingIndex = this.contacts.findIndex(c => c.name === name);
+
+    if (existingIndex !== -1) {
+      this.contacts.splice(existingIndex, 1);
+    }
   }
 
   @Mutation
@@ -102,32 +102,13 @@ class Contact extends VuexModule {
 
   @Mutation
   public SAVE_CONTACT(contact: IContact) {
-    const isExisting = this.contacts.find(c => {
-      return c.name === contact.name;
-    });
+    const existingIndex = this.contacts.findIndex(c => c.name === contact.name);
 
-    if (isExisting) {
-      this.removeContact(contact.id);
+    if (existingIndex !== -1) {
+      this.contacts.splice(existingIndex, 1);
     }
 
     this.contacts.push(contact);
-  }
-
-  private getIndex(id: number): number {
-    return this.contacts
-      .map(contactItem => {
-        return contactItem.id;
-      })
-      .indexOf(id);
-  }
-
-  private removeContact(id: number) {
-    const index = this.getIndex(id);
-    if (index === -1) {
-      return;
-    }
-
-    this.contacts.splice(index, 1);
   }
 }
 

@@ -1,8 +1,5 @@
 <template>
-  <v-layout v-if="isloading">
-    <v-progress-circular></v-progress-circular>
-  </v-layout>
-  <v-layout row v-else>
+  <v-layout row>
     <v-flex>
       <v-card :key="contact.name + contact.id + contact.lastupdate">
         <v-img src="https://cdn.vuetifyjs.com/images/lists/ali.png" height="300px">
@@ -83,15 +80,13 @@ import { mapGetters } from "vuex";
 import { Component, Vue, Prop } from "vue-property-decorator";
 import contactStore from "@/components/contact/ContactStore";
 import { IContact, IContactRouter, CONTACT_VIEW } from "@/types";
-import { getRouter } from "./ContactRouter";
+import { getRouter } from "@/components/contact/contact-router";
 
 @Component
 export default class ContactCard extends Vue {
   get contact(): IContact {
     return contactStore.selectedContact;
   }
-
-  public isloading: boolean = true;
 
   private contactRouter: IContactRouter = getRouter();
 
@@ -113,8 +108,6 @@ export default class ContactCard extends Vue {
     if (this.isRoute()) {
       await contactStore.getContact(this.$route.params.name);
     }
-
-    this.isloading = false;
   }
 
   private isRoute(): boolean {

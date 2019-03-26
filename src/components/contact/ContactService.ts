@@ -18,8 +18,8 @@ export default class ContactService {
       });
   }
 
-  public async delete(id: number): Promise<void> {
-    return this.httpService.delete(`${this.basePath}/${id}`).then(resp => {
+  public async delete(name: string): Promise<void> {
+    return this.httpService.delete(`${this.basePath}/${name}`).then(resp => {
       return resp.data;
     });
   }

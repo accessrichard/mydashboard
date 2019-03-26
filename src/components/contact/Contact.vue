@@ -28,7 +28,7 @@ import { IContact } from "@/types";
 import router from "@/router";
 import contactStore from "@/components/contact/ContactStore";
 import ContactList from "@/components/contact/ContactList.vue";
-import { getRouter } from "@/components/contact/ContactRouter";
+import { getRouter } from "@/components/contact/contact-router";
 
 @Component({
   name: "Contact",

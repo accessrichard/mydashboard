@@ -46,7 +46,11 @@ export interface IContact {
   id: number;
 }
 
-export const CONTACT_VIEW = {
+export interface IContactView {
+  [key: string]: any;
+}
+
+export const CONTACT_VIEW: IContactView = {
   LIST: 'contact-list',
   EDIT: 'contact-edit',
   VIEW: 'contact-card'

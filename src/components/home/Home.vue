@@ -3,6 +3,7 @@
     <v-layout justify-center align-center>
       <v-flex text-xs-center fill-height>
         <todo></todo>
+        
         <Read v-bind:page="page"></Read>
         <contact-view></contact-view>
         <Toc></Toc>
@@ -22,9 +23,9 @@ import Read from "@/components/wiki/Read.vue";
   name: "Home",
   components: {
     Todo,
+    Toc,
     ContactView,
-    Read,
-    Toc
+    Read  
   }
 })
 export default class Home extends Vue {

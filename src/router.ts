@@ -44,23 +44,24 @@ const router = new Router({
         import(/* webpackChunkName: 'todo' */ '@/components/todo/Todo.vue')
     },
     {
-      path: '/contact',
-      name: 'contact-list',
+      path: '/contact/:name?/:view?',
+      name: 'contact',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ '@/components/contact/Contact.vue')
-    },
-    {
-      path: '/contact/:name',
-      name: 'contact-view',
-      component: () =>
-        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactCard.vue')
-    },
-    {
-      path: '/contact/edit/:name',
-      name: 'contact-edit',
-      component: () =>
-        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactEdit.vue')
+        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactView.vue')
     }
+    // ,
+    // {
+    //   path: '/contact/:name',
+    //   name: 'contact-view',
+    //   component: () =>
+    //     import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactCard.vue')
+    // },
+    // {
+    //   path: '/contact/edit/:name',
+    //   name: 'contact-edit',
+    //   component: () =>
+    //     import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactEdit.vue')
+    // }
   ]
 });
 

@@ -28,7 +28,9 @@ import wikiStore from "@/components/wiki/WikiStore";
 import router from "@/router";
 import { Route } from "vue-router";
 
-@Component
+@Component({
+  name: "Toc",
+})
 export default class Toc extends Vue {
   get pages(): string[] {
     return wikiStore.pages;

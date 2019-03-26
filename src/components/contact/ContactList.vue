@@ -24,7 +24,7 @@ import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import { IContact, CONTACT_VIEW } from "@/types";
 import contactStore from "@/components/contact/ContactStore";
-import { getRouter } from "./ContactRouter";
+import { getRouter } from "@/components/contact/contact-router";
 
 @Component
 export default class ContactList extends Vue {
