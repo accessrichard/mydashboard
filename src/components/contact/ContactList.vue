@@ -7,7 +7,7 @@
       v-on:click="viewContact(contact.name)"
     >
       <v-list-tile-avatar v-bind:color="contact.color">
-        <span class="white--text headline">C</span>
+        <span class="white--text headline">{{contact.name.charAt(0).toUpperCase()}}</span>
       </v-list-tile-avatar>
 
       <v-list-tile-content>
