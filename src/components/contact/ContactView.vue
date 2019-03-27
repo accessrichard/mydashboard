@@ -1,22 +1,6 @@
 <template>
-  <v-layout row>
-    <v-flex>
-      <v-card>
-        <v-toolbar color="primary" dark>
-          <v-toolbar-side-icon></v-toolbar-side-icon>
-
-          <v-toolbar-title class="text-xs-center">Contacts</v-toolbar-title>
-
-          <v-spacer></v-spacer>
-
-          <v-btn icon v-on:click="addContact()">
-            <v-icon>control_point</v-icon>
-          </v-btn>
-        </v-toolbar>
-        <component v-bind:is="currentContactView"></component>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  
+  <component v-bind:is="currentContactView"></component>
 </template>
 
 

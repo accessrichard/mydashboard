@@ -4,7 +4,6 @@ import router from "@/router";
 
 export default class ContactUrlRouter implements IContactRouter {
   public edit(name: string): void {
-    
     router.push({ name: 'contact', params: { name, view: 'edit' } });
   }
 

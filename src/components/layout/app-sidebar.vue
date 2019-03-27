@@ -47,21 +47,21 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import layoutStore from '@/components/layout/LayoutStore';
+
 
 @Component
 export default class AppSidebar extends Vue {
   get drawer(): boolean {
-    return this.$store.state.layout.leftSidebar.visible;
+    return layoutStore.leftSidebar.isVisible;
   }
 
   set drawer(isVisible: boolean) {
-    this.$store.dispatch("layout/toggleLeftSidebar", { visible: isVisible });
+    layoutStore.leftSidebar.isVisible = isVisible;
   }
 
   public toggleWikiSidebar() {
-    this.$store.dispatch("layout/toggleWikiSidebar", {
-      visible: !this.$store.state.layout.wikiSidebar.visible
-    });
+    layoutStore.wikiSidebar.isVisible = !layoutStore.wikiSidebar.isVisible;
   }
 }
 </script>

@@ -1,15 +1,22 @@
-import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
+import {
+  Module,
+  VuexModule,
+  Mutation,
+  Action,
+  getModule
+} from 'vuex-module-decorators';
 import { ISideBar } from '@/types';
+import store from '@/store';
 
-@Module({ namespaced: true })
-export default class LayoutModule extends VuexModule {
+@Module({ dynamic: true, namespaced: true, name: 'layout', store })
+class LayoutStore extends VuexModule {
   public leftSidebar: ISideBar = {
-      isVisible: true
+    isVisible: true
   };
 
   public wikiSidebar: ISideBar = {
     isVisible: true
-};
+  };
 
   @Action({ commit: 'commitToggleLeftSidebar' })
   public toggleLeftSidebar(val: ISideBar): ISideBar {
@@ -31,3 +38,5 @@ export default class LayoutModule extends VuexModule {
     this.wikiSidebar = state;
   }
 }
+
+export default getModule(LayoutStore);

@@ -13,7 +13,7 @@
             <v-icon>control_point</v-icon>
           </v-btn>
         </v-toolbar>
-        <contact-list></contact-list>
+        <contacts></contacts>
       </v-card>
     </v-flex>
   </v-layout>
@@ -26,14 +26,13 @@ import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import { IContact } from "@/types";
 import router from "@/router";
-import contactStore from "@/components/contact/ContactStore";
-import ContactList from "@/components/contact/ContactList.vue";
+import ContactView from "@/components/contact/ContactView.vue";
 import { getRouter } from "@/components/contact/contact-router";
 
 @Component({
   name: "Contact",
   components: {
-    ContactList
+    "contacts": ContactView
   }
 })
 export default class Contact extends Vue {

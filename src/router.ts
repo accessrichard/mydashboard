@@ -47,7 +47,7 @@ const router = new Router({
       path: '/contact/:name?/:view?',
       name: 'contact',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactView.vue')
+        import(/* webpackChunkName: 'contact' */ '@/components/contact/Contact.vue')
     }
     // ,
     // {

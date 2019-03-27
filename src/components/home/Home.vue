@@ -1,12 +1,41 @@
 <template>
   <v-container fluid>
-    <v-layout justify-center align-center>
-      <v-flex text-xs-center fill-height>
-        <todo></todo>
-        
-        <Read v-bind:page="page"></Read>
-        <contact-view></contact-view>
-        <Toc></Toc>
+    <v-layout>
+      <v-flex fill-height>
+        <v-card>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">Notes</h3>
+              <div>
+                <read v-bind:page="page"></read>
+              </div>
+            </div>
+          </v-card-title>
+        </v-card>
+
+           <v-card>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">Todo</h3>
+              <div>
+                 <todos></todos>
+              </div>
+            </div>
+          </v-card-title>
+        </v-card>
+        <v-card>
+         <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">Contacts</h3>
+              <div>
+                <contacts></contacts>
+              </div>
+            </div>
+          </v-card-title>
+        </v-card>
+
+      
+       
       </v-flex>
     </v-layout>
   </v-container>
@@ -14,18 +43,16 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Toc from "@/components/wiki/Toc.vue";
-import Todo from "@/components/todo/Todo.vue";
+import TodoList from "@/components/todo/TodoList.vue";
 import ContactView from "@/components/contact/ContactView.vue";
 import Read from "@/components/wiki/Read.vue";
 
 @Component({
   name: "Home",
   components: {
-    Todo,
-    Toc,
-    ContactView,
-    Read  
+    todos: TodoList,
+    contacts: ContactView,
+    Read
   }
 })
 export default class Home extends Vue {

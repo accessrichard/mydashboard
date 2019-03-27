@@ -10,34 +10,33 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
-    <Toc></Toc>
+    <table-of-contents></table-of-contents>
   </v-navigation-drawer>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Toc from "@/components/wiki/Toc.vue";
+import layoutStore from '@/components/layout/LayoutStore';
 
 @Component({
   name: "AppWikibar",
   components: {
-    Toc
+    "table-of-contents": Toc
   }
 })
 export default class AppWikibar extends Vue {
 
   get drawer(): boolean {
-    return this.$store.state.layout.wikiSidebar.visible;
+    return layoutStore.wikiSidebar.isVisible;
   }
 
   set drawer(isVisible: boolean) {
-    this.$store.dispatch("layout/toggleWikiSidebar", { visible: isVisible });
+    layoutStore.wikiSidebar.isVisible = isVisible;
   }
 
   public toggleWikiSidebar() {
-    this.$store.dispatch("layout/toggleWikiSidebar", {
-      visible: !this.$store.state.layout.wikiSidebar.visible
-    });
+      layoutStore.wikiSidebar.isVisible = !layoutStore.wikiSidebar.isVisible;
   }
 }
 </script>
