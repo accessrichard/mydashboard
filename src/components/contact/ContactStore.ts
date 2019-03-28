@@ -5,11 +5,11 @@ import {
   Action,
   getModule
 } from 'vuex-module-decorators';
-import ContactService from '@/components/contact/ContactService';
+import ContactApi from '@/components/contact/ContactApi';
 import { IContact } from '@/types';
 import store from '@/store';
 
-const service = new ContactService();
+const service = new ContactApi();
 
 @Module({ dynamic: true, namespaced: true, name: 'contact', store })
 class Contact extends VuexModule {

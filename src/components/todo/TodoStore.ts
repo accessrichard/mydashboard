@@ -5,11 +5,11 @@ import {
   Action,
   getModule
 } from 'vuex-module-decorators';
-import TodoService from '@/components/todo/TodoService';
+import TodoApi from '@/components/todo/TodoApi';
 import { ITodo } from '@/types';
 import store from '@/store';
 
-const service = new TodoService();
+const service = new TodoApi();
 
 @Module({ dynamic: true, namespaced: true, name: 'todo', store })
 class Todo extends VuexModule {

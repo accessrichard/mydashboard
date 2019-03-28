@@ -1,7 +1,7 @@
 import HttpService from '@/api/HttpService';
 import IGetPagesResponse from '@/types';
 
-export default class WikiService {
+export default class WikiApi {
   private httpService: HttpService;
 
   private readonly basePath: string = '/wiki/';

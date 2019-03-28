@@ -79,8 +79,8 @@
 import { mapGetters } from "vuex";
 import { Component, Vue, Prop } from "vue-property-decorator";
 import contactStore from "@/components/contact/ContactStore";
-import { IContact, IContactRouter, CONTACT_VIEW } from "@/types";
-import { getRouter } from "@/components/contact/contact-router";
+import { IContact, IContactNavigator, CONTACT_VIEW } from "@/types";
+import { getNavigator } from "@/components/contact/contact-navigator";
 
 @Component
 export default class ContactCard extends Vue {
@@ -88,7 +88,7 @@ export default class ContactCard extends Vue {
     return contactStore.selectedContact;
   }
 
-  private contactRouter: IContactRouter = getRouter();
+  private contactRouter: IContactNavigator = getNavigator();
 
   public openLink() {
     if (this.contact.link) {
@@ -97,11 +97,11 @@ export default class ContactCard extends Vue {
   }
 
   public edit() {
-    getRouter().edit(this.contact.name);
+    getNavigator().edit(this.contact.name);
   }
 
   public back() {
-    getRouter().list();
+    getNavigator().list();
   }
 
   public async mounted() {

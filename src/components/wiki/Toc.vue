@@ -29,7 +29,7 @@ import router from "@/router";
 import { Route } from "vue-router";
 
 @Component({
-  name: "table-of-contents",
+  name: "table-of-contents"
 })
 export default class Toc extends Vue {
   get pages(): string[] {
@@ -54,10 +54,9 @@ export default class Toc extends Vue {
   }
 
   public created() {
-    if (wikiStore.pages.length == 0){
+    if (wikiStore.pages.length === 0) {
       wikiStore.getPages();
     }
-    
   }
 }
 </script>

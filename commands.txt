@@ -1,4 +1,4 @@
 export VUE_CLI_BABEL_TARGET_NODE=true
 export VUE_CLI_BABEL_TRANSPILE_MODULES=true
 
-node --inspect ./node_modules/.bin/jest --config ./jest.config.js --runInBand ./tests/unit/wikiService.spec.ts
+node --inspect ./node_modules/.bin/jest --config ./jest.config.js --runInBand ./tests/unit/WikiApi.spec.ts

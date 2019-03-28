@@ -1,7 +1,7 @@
 import HttpService from '@/api/HttpService';
 import { ITodo } from '@/types';
 
-export default class TodoService {
+export default class TodoApi {
   private httpService: HttpService;
 
   private readonly basePath: string = '/todo/';

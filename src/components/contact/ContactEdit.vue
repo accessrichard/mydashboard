@@ -120,14 +120,14 @@ import { mapGetters } from "vuex";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import contactStore from "@/components/contact/ContactStore";
 import { IContact, CONTACT_VIEW } from "@/types";
-import { getRouter } from "@/components/contact/contact-router";
+import { getNavigator } from "@/components/contact/contact-navigator";
 
 @Component
 export default class ContactEdit extends Vue {
   public contact: IContact = { lastupdate: new Date() } as IContact;
 
   public back() {
-    getRouter().view(this.contact.name);
+    getNavigator().view(this.contact.name);
   }
 
   public async remove() {
@@ -135,7 +135,7 @@ export default class ContactEdit extends Vue {
       await contactStore.delete(this.contact);
     }
 
-    getRouter().list();
+    getNavigator().list();
   }
 
   public async save() {
@@ -147,7 +147,7 @@ export default class ContactEdit extends Vue {
     }
 
     await contactStore.save(this.contact);
-    getRouter().view(this.contact.name);
+    getNavigator().view(this.contact.name);
   }
 
   public async mounted() {

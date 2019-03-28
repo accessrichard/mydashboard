@@ -49,19 +49,6 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: 'contact' */ '@/components/contact/Contact.vue')
     }
-    // ,
-    // {
-    //   path: '/contact/:name',
-    //   name: 'contact-view',
-    //   component: () =>
-    //     import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactCard.vue')
-    // },
-    // {
-    //   path: '/contact/edit/:name',
-    //   name: 'contact-edit',
-    //   component: () =>
-    //     import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactEdit.vue')
-    // }
   ]
 });
 

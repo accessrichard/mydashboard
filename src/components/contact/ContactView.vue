@@ -1,9 +1,6 @@
 <template>
-  
   <component v-bind:is="currentContactView"></component>
 </template>
-
-
 
 <script lang='ts'>
 import { mapGetters } from "vuex";

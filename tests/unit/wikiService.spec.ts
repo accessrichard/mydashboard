@@ -1,4 +1,4 @@
-import WikiService from '@/components/wiki/WikiService';
+import WikiApi from '@/components/wiki/WikiApi';
 import axios from 'axios';
 
 axios.interceptors.request.use((request) => {
@@ -29,7 +29,7 @@ it.only('test axios', (done) => {
 });
 
 it('Gets wiki pages', async () => {
-  const service = new WikiService();
+  const service = new WikiApi();
   const page = await service.getPages();
   expect(page).not.toBeNull();
 });

@@ -27,17 +27,17 @@ import { Component, Vue } from "vue-property-decorator";
 import { IContact } from "@/types";
 import router from "@/router";
 import ContactView from "@/components/contact/ContactView.vue";
-import { getRouter } from "@/components/contact/contact-router";
+import { getNavigator } from "@/components/contact/contact-navigator";
 
 @Component({
   name: "Contact",
   components: {
-    "contacts": ContactView
+    contacts: ContactView
   }
 })
 export default class Contact extends Vue {
   public addContact() {
-    getRouter().edit("New Contact");
+    getNavigator().edit("New Contact");
   }
 }
 </script>

@@ -13,18 +13,18 @@
           </v-card-title>
         </v-card>
 
-           <v-card>
+        <v-card>
           <v-card-title primary-title>
             <div>
               <h3 class="headline mb-0">Todo</h3>
               <div>
-                 <todos></todos>
+                <todos></todos>
               </div>
             </div>
           </v-card-title>
         </v-card>
         <v-card>
-         <v-card-title primary-title>
+          <v-card-title primary-title>
             <div>
               <h3 class="headline mb-0">Contacts</h3>
               <div>
@@ -33,9 +33,6 @@
             </div>
           </v-card-title>
         </v-card>
-
-      
-       
       </v-flex>
     </v-layout>
   </v-container>

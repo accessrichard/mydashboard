@@ -4,8 +4,8 @@
       v-for="contact in contacts"
       :key="contact.id + contact.name + contact.lastupdate.toString()"
       avatar
-      v-on:click="viewContact(contact.name)"
-    >
+      v-on:click="viewContact(contact.name)">
+      
       <v-list-tile-avatar v-bind:color="contact.color">
         <span class="white--text headline">{{contact.name.charAt(0).toUpperCase()}}</span>
       </v-list-tile-avatar>
@@ -17,14 +17,12 @@
   </v-list>
 </template>
 
-
-
 <script lang='ts'>
 import { mapGetters } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
 import { IContact, CONTACT_VIEW } from "@/types";
 import contactStore from "@/components/contact/ContactStore";
-import { getRouter } from "@/components/contact/contact-router";
+import { getNavigator } from "@/components/contact/contact-navigator";
 
 @Component
 export default class ContactList extends Vue {
@@ -33,12 +31,12 @@ export default class ContactList extends Vue {
   }
 
   public add() {
-    getRouter().edit("New Contact");
+    getNavigator().edit("New Contact");
   }
 
   public async viewContact(name: string) {
     await contactStore.getContact(name);
-    getRouter().view(name);
+    getNavigator().view(name);
   }
 
   public async mounted() {

@@ -1,8 +1,8 @@
-import { IContact, IContactRouter, CONTACT_VIEW } from '@/types';
+import { IContact, IContactNavigator, CONTACT_VIEW } from '@/types';
 import router from "@/router";
 
 
-export default class ContactUrlRouter implements IContactRouter {
+export default class ContactUrlNavigator implements IContactNavigator {
   public edit(name: string): void {
     router.push({ name: 'contact', params: { name, view: 'edit' } });
   }

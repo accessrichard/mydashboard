@@ -1,15 +1,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 import marked from 'marked';
-import WikiService from '@/components/wiki/WikiService';
+import WikiApi from '@/components/wiki/WikiApi';
 
 export default class PageMixin extends Vue {
   public content: string = '';
 
-  protected service: WikiService;
+  protected service: WikiApi;
 
   constructor() {
     super();
-    this.service = new WikiService();
+    this.service = new WikiApi();
   }
 
   public getHtmlContent(pageName: string): Promise<string> {

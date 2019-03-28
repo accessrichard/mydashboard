@@ -1,7 +1,7 @@
 import HttpService from '@/api/HttpService';
 import { IContact } from '@/types';
 
-export default class ContactService {
+export default class ContactApi {
   private httpService: HttpService;
 
   private readonly basePath: string = '/contact';

@@ -1,7 +1,7 @@
-import { CONTACT_VIEW, IContactRouter } from '@/types';
+import { CONTACT_VIEW, IContactNavigator } from '@/types';
 import contactStore from '@/components/contact/ContactStore';
 
-export default class ContactStoreRouter implements IContactRouter {
+export default class ContactStoreNavigator implements IContactNavigator {
   public edit(name: string): void {
     this.setView(CONTACT_VIEW.EDIT);
   }

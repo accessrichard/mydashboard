@@ -5,10 +5,10 @@ import {
   Action,
   getModule
 } from 'vuex-module-decorators';
-import WikiService from '@/components/wiki/WikiService';
+import WikiApi from '@/components/wiki/WikiApi';
 import store from '@/store';
 
-const service = new WikiService();
+const service = new WikiApi();
 
 @Module({ dynamic: true, namespaced: true, name: 'wiki', store })
 class Wiki extends VuexModule {

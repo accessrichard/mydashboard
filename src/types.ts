@@ -56,7 +56,7 @@ export const CONTACT_VIEW: IContactView = {
   VIEW: 'contact-card'
 };
 
-export interface IContactRouter {
+export interface IContactNavigator {
   list(): void;
   edit(name: string): void;
   view(name: string): void;
