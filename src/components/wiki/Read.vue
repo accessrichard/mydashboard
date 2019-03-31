@@ -1,7 +1,16 @@
 <template>
   <div>
-    <div v-html="content"></div>
-    <v-icon v-on:click="toEdit">edit</v-icon>
+    <v-card>
+      <v-card-title primary-title>
+        <h3 class="headline mb-0">{{page || this.$route.params.page.split("_").join(" ")}}</h3>
+      </v-card-title>
+      <v-list-tile-content>
+        <div class="pa-3">
+          <div v-html="content"></div>
+          <v-icon v-on:click="toEdit">edit</v-icon>
+        </div>
+      </v-list-tile-content>
+    </v-card>
   </div>
 </template>
 

@@ -2,16 +2,7 @@
   <v-container grid-list-md>
     <v-layout row wrap>
       <v-flex>
-        <v-card>
-          <v-card-title primary-title>
-            <h3 class="headline mb-0">Notes</h3>
-          </v-card-title>
-          <v-list-tile-content>
-            <div class="pa-3">
-            <read v-bind:page="page"></read>
-            </div>
-          </v-list-tile-content>
-        </v-card>
+        <read v-bind:page="page"></read>
       </v-flex>
       <v-flex>
         <v-card>
@@ -19,6 +10,14 @@
             <h3 class="headline mb-0">Todo</h3>
           </v-card-title>
           <todos></todos>
+        </v-card>
+      </v-flex>
+        <v-flex>
+        <v-card>
+          <v-card-title primary-title>
+            <h3 class="headline mb-0">Work</h3>
+          </v-card-title>
+          <work></work>
         </v-card>
       </v-flex>
       <v-flex>
@@ -36,15 +35,17 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import TodoList from "@/components/todo/TodoList.vue";
-import ContactView from "@/components/contact/ContactList.vue";
+import ContactList from "@/components/contact/ContactList.vue";
 import Read from "@/components/wiki/Read.vue";
+import Work from "@/components/work/Work.vue";
 
 @Component({
   name: "Home",
   components: {
     todos: TodoList,
-    contacts: ContactView,
-    Read
+    contacts: ContactList,
+    Read,
+    Work
   }
 })
 export default class Home extends Vue {

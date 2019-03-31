@@ -28,9 +28,5 @@ export default class AppHeader extends Vue {
   public toggleLeftSidebar() {
     layoutStore.leftSidebar.isVisible = !layoutStore.leftSidebar.isVisible;
   }
-
-  public toggleWikiSidebar() {
-    layoutStore.wikiSidebar.isVisible = !layoutStore.wikiSidebar.isVisible;
-  }
 }
 </script>
