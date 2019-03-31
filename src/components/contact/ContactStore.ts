@@ -15,15 +15,6 @@ const service = new ContactApi();
 class Contact extends VuexModule {
   public contacts: IContact[] = [];
 
-  public selectedContact: IContact = {} as IContact;
-
-  public view: string = 'contact-list';
-
-  @Action({ commit: 'CHANGE_VIEW' })
-  public setView(view: string) {
-    return view;
-  }
-
   @Action({ commit: 'GET_CONTACTS' })
   public async getContacts(): Promise<IContact[]> {
     if (this.contacts.length > 0) {
@@ -34,25 +25,11 @@ class Contact extends VuexModule {
     return contacts;
   }
 
-  @Action({ commit: 'GET_CONTACT' })
-  public async getContact(name: string): Promise<IContact> {
-    if (this.contacts.length === 0) {
-      await this.getContacts();
-    }
-
-    const contact = this.contacts.filter(x => x.name === name);
-
-    if (contact.length === 0) {
-      return { lastupdate: new Date() } as IContact;
-    }
-
-    return contact[0];
-  }
-
   @Action({ commit: 'DELETE_CONTACT' })
   public async delete(contact: IContact) {
+    //// Swap to ID
     await service.delete(contact.name);
-    return contact.name;
+    return contact;
   }
 
   @Action({ commit: 'SAVE_CONTACT' })
@@ -62,28 +39,9 @@ class Contact extends VuexModule {
     });
   }
 
-  @Action({ commit: 'CREATE_NEW' })
-  public create(name: string) {
-    return name;
-  }
-
   @Mutation
-  public CREATE_NEW(name: string) {
-    this.selectedContact.name = name;
-    this.selectedContact.lastupdate = new Date();
-    this.selectedContact.id = 0;
-  }
-
-  @Mutation
-  public CHANGE_VIEW(view: string) {
-    this.view = view;
-  }
-
-  @Mutation
-  public DELETE_CONTACT(name: string) {
-    this.selectedContact = { name: 'New Contact' } as IContact;
-
-    const existingIndex = this.contacts.findIndex(c => c.name === name);
+  public DELETE_CONTACT(contact: IContact) {
+    const existingIndex = this.contacts.findIndex(c => c.id === contact.id);
 
     if (existingIndex !== -1) {
       this.contacts.splice(existingIndex, 1);
@@ -96,16 +54,16 @@ class Contact extends VuexModule {
   }
 
   @Mutation
-  public GET_CONTACT(contact: IContact) {
-    this.selectedContact = contact;
-  }
-
-  @Mutation
   public SAVE_CONTACT(contact: IContact) {
-    const existingIndex = this.contacts.findIndex(c => c.name === contact.name);
+    //// Find by id then name temporarily
+    let  existingIndex = this.contacts.findIndex(c => c.id === contact.id);
+    if (existingIndex === -1 && contact.id !== 0) {
+      existingIndex = this.contacts.findIndex(c => c.name === contact.name);
+    }
 
     if (existingIndex !== -1) {
-      this.contacts.splice(existingIndex, 1);
+      this.contacts[existingIndex] = contact;
+      return;
     }
 
     this.contacts.push(contact);

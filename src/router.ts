@@ -14,6 +14,12 @@ const router = new Router({
       component: Home
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: () =>
+        import(/* webpackChunkName: 'contact' */ '@/components/contact/ContactList.vue')
+    },
+    {
       path: '/links',
       name: 'links',
       component: () =>
@@ -41,14 +47,21 @@ const router = new Router({
       path: '/todo',
       name: 'todo',
       component: () =>
-        import(/* webpackChunkName: 'todo' */ '@/components/todo/Todo.vue')
+        import(/* webpackChunkName: 'todo' */ '@/components/todo/TodoList.vue')
     },
     {
-      path: '/contact/:name?/:view?',
-      name: 'contact',
+      path: '/work',
+      name: 'work',
       component: () =>
-        import(/* webpackChunkName: 'contact' */ '@/components/contact/Contact.vue')
+        import(/* webpackChunkName: 'work' */ '@/components/work/Work.vue')
+    },
+    {
+      path: '/work1/:id',
+      name: 'work',
+      component: () =>
+        import(/* webpackChunkName: 'work' */ '@/components/work/WorkItem.vue')
     }
+
   ]
 });
 

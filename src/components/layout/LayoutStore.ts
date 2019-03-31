@@ -11,11 +11,7 @@ import store from '@/store';
 @Module({ dynamic: true, namespaced: true, name: 'layout', store })
 class LayoutStore extends VuexModule {
   public leftSidebar: ISideBar = {
-    isVisible: true
-  };
-
-  public wikiSidebar: ISideBar = {
-    isVisible: true
+    isVisible: false
   };
 
   @Action({ commit: 'commitToggleLeftSidebar' })
@@ -23,19 +19,9 @@ class LayoutStore extends VuexModule {
     return val;
   }
 
-  @Action({ commit: 'commitToggleWikiSidebar' })
-  public toggleWikiSidebar(val: ISideBar): ISideBar {
-    return val;
-  }
-
   @Mutation
   public commitToggleLeftSidebar(state: ISideBar) {
     this.leftSidebar = state;
-  }
-
-  @Mutation
-  public commitToggleWikiSidebar(state: ISideBar) {
-    this.wikiSidebar = state;
   }
 }
 

@@ -10,7 +10,6 @@
     <v-toolbar-items class="hidden-sm-and-down">
       <quick-links></quick-links>
     </v-toolbar-items>
-    <v-toolbar-side-icon v-on:click.stop="toggleWikiSidebar()"></v-toolbar-side-icon>
   </v-toolbar>
 </template>
 

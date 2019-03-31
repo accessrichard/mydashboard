@@ -1,26 +1,20 @@
 <template>
   <v-layout row>
     <v-flex>
-      <v-card :key="contact.name + contact.id + contact.lastupdate">
-        <v-img src="https://cdn.vuetifyjs.com/images/lists/ali.png" height="300px">
-          <v-layout column fill-height>
-            <v-card-title>
-              <v-spacer></v-spacer>
-              <v-btn dark icon class="mr-3" v-on:click="back()">
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-              <v-btn dark icon class="mr-3" v-on:click="edit()">
-                <v-icon>edit</v-icon>
-              </v-btn>
-            </v-card-title>
+      <v-card :key="contact.id + contact.lastupdate">
+        <v-card-title>
+          <span class="headline">Contact</span>
+        </v-card-title>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon color="primary">person</v-icon>
+          </v-list-tile-action>
 
-            <v-spacer></v-spacer>
-
-            <v-card-title class="white--text pl-5 pt-5">
-              <div class="display-1 pl-5 pt-5">{{contact.name}}</div>
-            </v-card-title>
-          </v-layout>
-        </v-img>
+          <v-list-tile-content>
+            <v-list-tile-title>{{contact.name}}</v-list-tile-title>
+            <v-list-tile-sub-title>Name</v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
 
         <v-list two-line>
           <v-list-tile>
@@ -74,46 +68,30 @@
   </v-layout>
 </template>
 
-
 <script lang='ts'>
 import { mapGetters } from "vuex";
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import contactStore from "@/components/contact/ContactStore";
-import { IContact, IContactNavigator, CONTACT_VIEW } from "@/types";
-import { getNavigator } from "@/components/contact/contact-navigator";
+import { IContact } from "@/types";
 
 @Component
-export default class ContactCard extends Vue {
-  get contact(): IContact {
-    return contactStore.selectedContact;
-  }
-
-  private contactRouter: IContactNavigator = getNavigator();
+export default class ContactEditDialog extends Vue {
+  @Prop({
+    default: {
+      name: " ",
+      workPhone: "",
+      email: "",
+      link: ""
+    }
+  })
+  public readonly contact!: IContact;
 
   public openLink() {
     if (this.contact.link) {
       window.open(this.contact.link, "_blank");
     }
   }
-
-  public edit() {
-    getNavigator().edit(this.contact.name);
-  }
-
-  public back() {
-    getNavigator().list();
-  }
-
-  public async mounted() {
-    if (this.isRoute()) {
-      await contactStore.getContact(this.$route.params.name);
-    }
-  }
-
-  private isRoute(): boolean {
-    return (
-      this.$route.name !== undefined && this.$route.name.startsWith("contact")
-    );
-  }
 }
 </script>
+
+

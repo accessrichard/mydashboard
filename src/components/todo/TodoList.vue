@@ -16,6 +16,8 @@
         <v-select :items="types" label></v-select>
       </v-flex>
     </v-list-tile>
+    
+
     <v-list-tile v-for="todo in todos" :key="todo.id">
       <v-list-tile-action>
         <v-icon v-on:click="removeTodo(todo)">remove_circle_outline</v-icon>
@@ -24,6 +26,7 @@
         <v-list-tile-title v-text="todo.title"></v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
+
   </v-list>
 </template>
 
