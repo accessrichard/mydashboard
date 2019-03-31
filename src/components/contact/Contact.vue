@@ -1,23 +1,22 @@
 <template>
   <v-card>
     <v-card-title primary-title>
-      <h3 class="headline mb-0">Todo</h3>
+      <h3 class="headline mb-0">Contacts</h3>
     </v-card-title>
-    <todos></todos>
+    <contact-list></contact-list>
   </v-card>
 </template>
 
 
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
-import TodoList from "@/components/todo/TodoList.vue";
+import ContactList from "@/components/contact/ContactList.vue";
 
 @Component({
-  name: "Todo",
   components: {
-    todos: TodoList
+    ContactList
   }
 })
-export default class Todo extends Vue {}
+export default class Contact extends Vue {}
 </script>
 

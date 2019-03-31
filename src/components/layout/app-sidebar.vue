@@ -47,7 +47,22 @@
             <v-list-tile-title>Wiki</v-list-tile-title>
           </v-list-tile>
         </template>
-        <table-of-contents></table-of-contents>
+           <v-list-tile to="/wiki/toc">
+        <v-list-tile-action>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>Table Of Contents</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
+        <v-list-group no-action sub-group value="true">
+          <template v-slot:activator>
+            <v-list-tile>
+              <v-list-tile-title>Pages</v-list-tile-title>
+            </v-list-tile>
+          </template>
+          <table-of-contents></table-of-contents>
+        </v-list-group>
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
@@ -56,12 +71,12 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import layoutStore from "@/components/layout/LayoutStore";
-import Toc from "@/components/wiki/Toc.vue";
+import TocList from "@/components/wiki/TocList.vue";
 
 @Component({
   name: "AppWikibar",
   components: {
-    "table-of-contents": Toc
+    "table-of-contents": TocList
   }
 })
 export default class AppSidebar extends Vue {
