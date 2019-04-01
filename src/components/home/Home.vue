@@ -1,13 +1,13 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex>
+      <v-flex xs12>
         <read v-bind:page="page"></read>
       </v-flex>
-      <v-flex>
+      <v-flex xs12>
         <todos></todos>
       </v-flex>
-      <v-flex>
+      <v-flex xs12>
         <v-card>
           <v-card-title primary-title>
             <h3 class="headline mb-0">Work</h3>
@@ -15,8 +15,8 @@
           <work></work>
         </v-card>
       </v-flex>
-      <v-flex>
-          <contacts></contacts>
+      <v-flex xs12>
+        <contacts></contacts>
       </v-flex>
     </v-layout>
   </v-container>
