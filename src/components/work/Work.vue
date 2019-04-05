@@ -1,34 +1,57 @@
 <template>
   <v-expansion-panel>
-    <v-expansion-panel-content expand v-for="(item,i) in 5" :key="i">
+    <v-expansion-panel-content expand v-for="(workItem, i) in workItems" :key="i">
       <template v-slot:header>
         <v-container>
           <v-layout row>
             <v-flex xs1>
               <span>
                 <router-link to="/work/1">
-                  <a>ID</a>
+                  <a>{{workItem.id}}</a>
                 </router-link>
               </span>
             </v-flex>
             <v-flex xs2>
-              <span>Type</span>
+              <span>{{workItem.workItemType}}</span>
             </v-flex>
             <v-flex xs2>
-              <span>Status</span>
+              <span>{{workItem.state}}</span>
             </v-flex>
             <v-flex xs2>
-              <span>User</span>
+              <span>{{workItem.assignedTo}}</span>
             </v-flex>
             <v-flex xs5>
-              <span>Title</span>
+              <span>{{workItem.title}}</span>
             </v-flex>
           </v-layout>
         </v-container>
       </template>
       <v-card>
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
+        <v-card-text>{{workItem.description}}</v-card-text>
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
 </template>
+
+
+<script lang='ts'>
+import { Component, Vue } from "vue-property-decorator";
+import { IWorkItemFields } from "@/types";
+import WorkApi from "@/components/work/WorkApi";
+
+@Component
+export default class WorkList extends Vue {
+  public workItems: IWorkItemFields[] = [];
+
+  private service: WorkApi;
+
+  constructor() {
+    super();
+    this.service = new WorkApi();
+  }
+
+  public async created() {
+    this.workItems = await this.service.getWork();
+  }
+}
+</script>

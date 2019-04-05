@@ -61,3 +61,66 @@ export interface IContactNavigator {
   edit(name: string): void;
   view(name: string): void;
 }
+
+export interface IComment {
+  revisedBy?: IIdentityReference;
+  revisedDate?: Date;
+  revision?: number;
+  text?: string;
+}
+
+export interface IIdentityReference {
+  id?: string;
+  name?: string;
+  url?: string;
+}
+
+export interface IWorkItemRelation {
+  rel: string;
+  url: string;
+  creationDate?: string;
+  name?: string;
+}
+
+export interface IWorkItemFields {
+  areaPath: string;
+  attachments?: IWorkItemRelation[];
+  teamProject: string;
+  iterationPath?: string;
+  workItemType: string;
+  state: string;
+  reason: string;
+  assignedTo?: string;
+  createdDate: Date;
+  createdBy: string;
+  changedDate: Date;
+  changedBy: string;
+  title?: string;
+  boardColumn?: string;
+  boardColumnDone?: string;
+  stateChangeDate: Date;
+  activityDate?: Date;
+  resolvedDate?: Date;
+  resolvedBy?: string;
+  storyPoints?: number;
+  description?: string;
+  history?: string;
+  tags?: string;
+  id?: number;
+  nodeName?: string;
+  remainingWork?: number;
+  originalEstimate?: number;
+  completedWork?: number;
+  revisions?: IChangeHistory[];
+  links?: IWorkItemRelation[];
+  comments?: IComment[];
+  reproSteps?: string;
+  systemInfo?: string;
+  [key: string]: any;
+}
+
+export interface IChangeHistory {
+  [key: string]: any;
+  changedBy?: string;
+  changedDate?: string;
+}
