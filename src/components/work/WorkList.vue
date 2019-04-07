@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-dialog v-model="isWorkItemVisible">
-      <WorkItem v-bind:id="id" v-on:close="isWorkItemVisible = false"></WorkItem>
+    <v-dialog v-model="isWorkItemVisible"  width="80%">
+      <work-list-item-card v-bind:id="id" v-on:close="isWorkItemVisible = false"></work-list-item-card>
     </v-dialog>
     <v-expansion-panel>
       <v-expansion-panel-content expand v-for="(workItem, i) in workItems" :key="i">
@@ -46,11 +46,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import { IWorkItemFields } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
-import WorkItem from "@/components/work/WorkItem.vue";
+import WorkListItemCard from "@/components/work/WorkListItemCard.vue";
 
 @Component({
   components: {
-    WorkItem
+    WorkListItemCard
   }
 })
 export default class WorkList extends Vue {

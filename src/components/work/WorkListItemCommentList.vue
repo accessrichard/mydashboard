@@ -28,7 +28,7 @@ import WorkApi from "@/components/work/WorkApi";
 import WorkChangeHistory from "@/components/work/WorkChangeHistory.vue";
 
 @Component
-export default class WorkComments extends Vue {
+export default class WorkListItemCommentList extends Vue {
   @Prop({
     default: () => {
       return [];

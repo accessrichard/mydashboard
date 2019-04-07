@@ -11,7 +11,7 @@ import { IWorkItemRelation } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 
 @Component
-export default class WorkAttachment extends Vue {
+export default class WorkListItemAttachmentListItem extends Vue {
   @Prop({
     default: () => {
       return {

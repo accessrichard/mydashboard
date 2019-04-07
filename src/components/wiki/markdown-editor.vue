@@ -116,7 +116,7 @@ export default class MarkdownEditor extends Vue {
 </script>
 
 
-<style>
+<style scoped>
 .full-height {
   height: 100%;
 }

@@ -78,7 +78,7 @@ import { IChangeHistory, IComment, IWorkItemFields } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 
 @Component
-export default class WorkItemSummary extends Vue {
+export default class WorkListItemSummary extends Vue {
   @Prop({
     default: {} as IWorkItemFields
   })
@@ -86,7 +86,7 @@ export default class WorkItemSummary extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .zero-padding div.v-list__tile {
   padding: 0;
 }

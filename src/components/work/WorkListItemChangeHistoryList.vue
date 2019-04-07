@@ -32,7 +32,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { IChangeHistory, IHtmlDialog, IKeyValue } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
-import WorkChangeHistory from "@/components/work/WorkChangeHistory.vue";
+import WorkChangeHistory from "@/components/work/WorkListItemChangeHistoryListItem.vue";
 import HtmlDialog from "@/components/layout/dialog/HtmlDialog.vue";
 
 @Component({
@@ -41,7 +41,7 @@ import HtmlDialog from "@/components/layout/dialog/HtmlDialog.vue";
     HtmlDialog
   }
 })
-export default class WorkChangeHistoryList extends Vue {
+export default class WorkListItemChangeHistoryList extends Vue {
   @Prop({
     default: () => {
       return [];

@@ -25,14 +25,14 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { IWorkItemRelation } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
-import WorkAttachment from "@/components/work/WorkAttachment.vue";
+import WorkAttachment from "@/components/work/WorkListItemAttachmentListItem.vue";
 
 @Component({
   components: {
     WorkAttachment
   }
 })
-export default class WorkAttachmentList extends Vue {
+export default class WorkListItemAttachmentList extends Vue {
   @Prop({
     default: () => {
       return [];

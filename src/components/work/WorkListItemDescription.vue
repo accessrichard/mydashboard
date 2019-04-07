@@ -34,7 +34,7 @@ import { IChangeHistory, IComment, IWorkItemFields } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 
 @Component
-export default class WorkDescription extends Vue {
+export default class WorkListItemDescription extends Vue {
   @Prop({
     default: {} as IWorkItemFields
   })

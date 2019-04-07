@@ -27,7 +27,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Todo from "@/components/todo/Todo.vue";
 import Contact from "@/components/contact/Contact.vue";
 import Read from "@/components/wiki/Read.vue";
-import Work from "@/components/work/Work.vue";
+import Work from "@/components/work/WorkList.vue";
 
 @Component({
   name: "Home",

@@ -21,7 +21,7 @@ import { IChangeHistory, IHtmlDialog, IKeyValue } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 
 @Component
-export default class WorkAttachment extends Vue {
+export default class WorkListItemChangeHistoryListItem extends Vue {
   @Prop({
     default: () => {
       return {

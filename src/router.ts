@@ -53,13 +53,13 @@ const router = new Router({
       path: '/work',
       name: 'work',
       component: () =>
-        import(/* webpackChunkName: 'work' */ '@/components/work/Work.vue')
+        import(/* webpackChunkName: 'work' */ '@/components/work/WorkList.vue')
     },
     {
       path: '/work/:id',
       name: 'workItem',
       component: () =>
-        import(/* webpackChunkName: 'work' */ '@/components/work/WorkItem.vue')
+        import(/* webpackChunkName: 'work' */ '@/components/work/WorkListItem.vue')
     }
 
   ]
