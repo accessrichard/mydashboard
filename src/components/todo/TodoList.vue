@@ -46,10 +46,6 @@ export default class TodoList extends Vue {
 
   public newTodo: string = "";
 
-  constructor() {
-    super();
-  }
-
   public addTodo(e: KeyboardEvent) {
     if (!this.newTodo) {
       return;

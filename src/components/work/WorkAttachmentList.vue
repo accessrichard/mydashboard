@@ -1,18 +1,25 @@
 <template>
- <v-list>
-  <v-list-tile v-for="(attachment, i) in attachments" :key="i">
-      <v-list-tile-action>
+  <v-layout>
+    <v-layout row>
+      <v-flex xs1 pa-3>
         <v-icon>attachment</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>
-            <WorkAttachment v-bind:attachment="attachment"></WorkAttachment>
-        </v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-  </v-list>
-</template>
+      </v-flex>
+      <v-flex>
+        <v-layout column>
+          <v-flex>
+            <v-list>
+              <v-list-tile-sub-title>Attachments</v-list-tile-sub-title>
+            </v-list>
+          </v-flex>
 
+          <v-flex v-for="(attachment, i) in attachments" :key="i">
+            <WorkAttachment v-bind:attachment="attachment"></WorkAttachment>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+    </v-layout>
+  </v-layout>
+</template>
 
 <script lang='ts'>
 import { Component, Vue, Prop } from "vue-property-decorator";
@@ -27,9 +34,9 @@ import WorkAttachment from "@/components/work/WorkAttachment.vue";
 })
 export default class WorkAttachmentList extends Vue {
   @Prop({
-      default: () => {
-          return [];
-      }
+    default: () => {
+      return [];
+    }
   })
   public attachments!: IWorkItemRelation[];
 }

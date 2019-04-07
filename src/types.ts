@@ -124,3 +124,14 @@ export interface IChangeHistory {
   changedBy?: string;
   changedDate?: string;
 }
+
+export interface IHtmlDialog {
+  title?: string;
+  html?: string;
+  isVisible: boolean;
+}
+
+export interface IKeyValue {
+  key: any;
+  value: any;
+}
