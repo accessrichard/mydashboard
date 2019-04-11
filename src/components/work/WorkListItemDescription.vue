@@ -10,11 +10,9 @@
             <v-list-tile-sub-title>Description</v-list-tile-sub-title>
           </v-list>
         </v-flex>
-
         <v-flex>
           <div v-if="workItem.description" v-html="workItem.description"></div>
           <div v-if="workItem.reproSteps" v-html="workItem.reproSteps"></div>
-
           <div v-if="workItem.systemInfo">
             <v-list>
               <v-list-tile-sub-title>System Info</v-list-tile-sub-title>

@@ -10,7 +10,6 @@
             <v-list-tile-sub-title>Comments</v-list-tile-sub-title>
           </v-list>
         </v-flex>
-
         <v-flex v-for="(comment, i) in comments" :key="i">
           {{comment.revisedBy}}
           <div v-html="comment.text"></div>

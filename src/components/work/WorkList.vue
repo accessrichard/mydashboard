@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-dialog v-model="isWorkItemVisible"  width="80%">
+    <v-dialog v-model="isWorkItemVisible" width="80%">
       <work-list-item-card v-bind:id="id" v-on:close="isWorkItemVisible = false"></work-list-item-card>
     </v-dialog>
     <v-expansion-panel>
@@ -8,11 +8,15 @@
         <template v-slot:header>
           <v-container>
             <v-layout row>
-              <v-flex xs1>
+              <v-flex xs2>
                 <span>
-                  <router-link :to="{ name: 'workItem', params: { id: workItem.id }}">
-                    <a>{{workItem.id}}</a>
-                  </router-link>
+                  <a href v-on:click.prevent="openWorkItemDialog(workItem)">{{workItem.id}}</a>
+                  <v-btn class="ma-0" icon :to="{ name: 'workItem', params: { id: workItem.id }}">
+                    <v-icon small>open_in_new</v-icon>
+                  </v-btn>
+                  <v-btn class="ma-0" icon :to="{ name: 'workItem', params: { id: workItem.id }}">
+                    <v-icon small>open_in_browser</v-icon>
+                  </v-btn>
                 </span>
               </v-flex>
               <v-flex xs2>
@@ -32,9 +36,6 @@
         </template>
         <v-card>
           <v-card-text>{{workItem.description}}</v-card-text>
-          <v-btn icon v-on:click="openWorkItemDialog(workItem)">
-            <v-icon>open_in_new</v-icon>
-          </v-btn>
         </v-card>
       </v-expansion-panel-content>
     </v-expansion-panel>

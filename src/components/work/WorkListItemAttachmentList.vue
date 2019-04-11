@@ -13,7 +13,7 @@
           </v-flex>
 
           <v-flex v-for="(attachment, i) in attachments" :key="i">
-            <WorkAttachment v-bind:attachment="attachment"></WorkAttachment>
+            <work-attachment v-bind:attachment="attachment"></work-attachment>
           </v-flex>
         </v-layout>
       </v-flex>

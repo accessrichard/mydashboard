@@ -11,7 +11,6 @@
               <v-list-tile-sub-title>Summary</v-list-tile-sub-title>
             </v-list>
           </v-flex>
-
           <v-layout row align-start justify-start fill-height pa-0>
             <v-flex xs4>
               <v-list two-line class="zero-padding pt-0">
@@ -37,7 +36,6 @@
                     <v-list-tile-title>{{workItem.workItemType}}</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
-
                 <v-list-tile>
                   <v-list-tile-content>
                     <v-list-tile-sub-title>State</v-list-tile-sub-title>
@@ -46,7 +44,6 @@
                 </v-list-tile>
               </v-list>
             </v-flex>
-
             <v-flex xs4>
               <v-list two-line class="zero-padding pt-0">
                    <v-list-tile>

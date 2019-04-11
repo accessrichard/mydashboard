@@ -7,8 +7,7 @@
       <v-btn icon v-on:click="$emit('openRevision', revision)">
         <v-icon>
           open_in_new
-        </v-icon>
-        
+        </v-icon>        
         </v-btn>
     </v-flex>
   </v-layout>

@@ -1,7 +1,7 @@
 <template>
   <v-layout row pt-3 pb-3>
-    <v-flex xs12 sm10 offset-md1>
-    <work-list-item-card></work-list-item-card>
+    <v-flex xs12 sm10 offset-md1>      
+      <work-list-item-card></work-list-item-card>
     </v-flex>
   </v-layout>
 </template>
@@ -17,6 +17,5 @@ import WorkListItemCard from "@/components/work/WorkListItemCard.vue";
     WorkListItemCard
   }
 })
-export default class WorkListItem extends Vue {
-}
+export default class WorkListItem extends Vue {}
 </script>
