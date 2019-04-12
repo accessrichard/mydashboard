@@ -44,7 +44,7 @@
 
 
 <script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import { IWorkItemFields } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 import WorkListItemCard from "@/components/work/WorkListItemCard.vue";
@@ -59,6 +59,7 @@ export default class WorkList extends Vue {
 
   public isWorkItemVisible: boolean = false;
 
+  @Prop(Number)
   public id!: number;
 
   private service: WorkApi;

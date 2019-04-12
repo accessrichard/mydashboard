@@ -64,7 +64,10 @@ export default class WorkListItemCard extends Vue {
   }
 
   public async created() {
-    this.workItem = await this.service.getWorkItem(this.getId());
+    const id = this.getId();
+    if (id) {
+      this.workItem = await this.service.getWorkItem(this.getId());
+    }
   }
 
   private getId(): number | any {
