@@ -11,7 +11,13 @@ export default class WorkApi {
   }
 
   public async getWork(): Promise<IWorkItemFields[]> {
-    return this.httpService.get<IWorkItemFields[]>(this.basePath).then(resp => {
+    return this.httpService.get<IWorkItemFields[]>(this.basePath + "list").then(resp => {
+      return resp.data;
+    });
+  }
+
+  public async getMyWork(): Promise<IWorkItemFields[]> {
+    return this.httpService.get<IWorkItemFields[]>(this.basePath + "mywork").then(resp => {
       return resp.data;
     });
   }

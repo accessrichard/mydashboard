@@ -16,7 +16,7 @@
 
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
-import QuickLinks from "@/components/links/quick-links.vue";
+import QuickLinks from "@/components/link/quick-links.vue";
 import layoutStore from "@/components/layout/LayoutStore";
 
 @Component({

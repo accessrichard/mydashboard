@@ -75,7 +75,7 @@ export default class WorkList extends Vue {
   }
 
   public async created() {
-    this.workItems = await this.service.getWork();
+    this.workItems = await this.service.getMyWork();
   }
 }
 </script>

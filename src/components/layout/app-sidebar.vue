@@ -9,14 +9,16 @@
           <v-list-tile-title>Home</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile to="/links">
-        <v-list-tile-action>
-          <v-icon>http</v-icon>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Links</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+
+      <v-list-group prepend-icon="http">
+        <template v-slot:activator>
+          <v-list-tile>
+            <v-list-tile-title>Links</v-list-tile-title>
+          </v-list-tile>
+        </template>
+        <link-group></link-group>
+      </v-list-group>
+
       <v-list-tile to="/contact">
         <v-list-tile-action>
           <v-icon>contact_mail</v-icon>
@@ -47,13 +49,12 @@
             <v-list-tile-title>Wiki</v-list-tile-title>
           </v-list-tile>
         </template>
-           <v-list-tile to="/wiki/toc">
-        <v-list-tile-action>
-        </v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>Table Of Contents</v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+        <v-list-tile to="/wiki/toc">
+          <v-list-tile-action></v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Table Of Contents</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
 
         <v-list-group no-action sub-group value="true">
           <template v-slot:activator>
@@ -72,11 +73,13 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import layoutStore from "@/components/layout/LayoutStore";
 import TocList from "@/components/wiki/TocList.vue";
+import LinkGroup from "@/components/link/LinkGroup.vue";
 
 @Component({
   name: "AppWikibar",
   components: {
-    "table-of-contents": TocList
+    "table-of-contents": TocList,
+    LinkGroup
   }
 })
 export default class AppSidebar extends Vue {

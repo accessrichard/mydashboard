@@ -2,16 +2,6 @@ export default interface IGetPagesResponse {
   pages: string[];
 }
 
-export interface ILink {
-  text: string;
-  href: string;
-}
-
-export interface ILinks {
-  header: string;
-  links: ILink[];
-}
-
 export interface IRootState {
   version: string;
 }
@@ -134,4 +124,13 @@ export interface IHtmlDialog {
 export interface IKeyValue {
   key: any;
   value: any;
+}
+export interface ILinkCategory {
+  text: string;
+  links: ILink[];
+}
+
+export interface ILink {
+  href: string;
+  text: string;
 }

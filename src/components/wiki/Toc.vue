@@ -8,7 +8,9 @@
               <h3 class="headline mb-0">Table Of Contents</h3>
             </div>
           </v-card-title>
+          <v-list dense>
           <table-of-contents-list></table-of-contents-list>
+          </v-list>
           <create></create>
         </v-card>
       </v-flex>
