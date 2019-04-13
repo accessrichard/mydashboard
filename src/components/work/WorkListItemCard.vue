@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="pa-3">
     <work-list-item-title v-bind:workItem="workItem"></work-list-item-title>
 
     <v-divider inset></v-divider>

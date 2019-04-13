@@ -17,7 +17,7 @@
                 <v-list-tile>
                   <v-list-tile-content>
                     <v-list-tile-sub-title>Assigned To</v-list-tile-sub-title>
-                    <v-list-tile-title>{{workItem.assingedTo}}</v-list-tile-title>
+                    <v-list-tile-title>{{workItem.assignedTo}}</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-list-tile>

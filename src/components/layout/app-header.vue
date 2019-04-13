@@ -8,7 +8,7 @@
 
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <quick-links></quick-links>
+      <weather></weather>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -16,12 +16,12 @@
 
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
-import QuickLinks from "@/components/link/quick-links.vue";
+import Weather from "@/components/link/Weather.vue";
 import layoutStore from "@/components/layout/LayoutStore";
 
 @Component({
   components: {
-    QuickLinks
+    Weather
   }
 })
 export default class AppHeader extends Vue {

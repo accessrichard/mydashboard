@@ -10,7 +10,14 @@
         <v-spacer></v-spacer>
         <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
       </v-card-title>
-      <v-data-table :headers="headers" :items="workItems" :search="search" hide-actions>
+      <v-data-table
+        :headers="headers"
+        :items="workItems"
+        :loading="loading"
+        :search="search"
+        hide-actions
+      >
+        <v-progress-linear v-slot:progress color="primary" indeterminate></v-progress-linear>
         <template v-slot:items="props">
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.workItemType }}</td>
@@ -52,6 +59,8 @@ export default class WorkList extends Vue {
 
   public search: string = "";
 
+  public loading: boolean = true;
+
   public headers: any = [
     {
       text: "ID",
@@ -84,12 +93,14 @@ export default class WorkList extends Vue {
   public openWorkItem(workItem: IWorkItemFields) {
     this.$router.push({
       name: "workItem",
-      params: { id: workItem.id} as any
+      params: { id: workItem.id } as any
     });
   }
 
   public async created() {
+    this.loading = true;
     this.workItems = await this.service.getWork();
+    this.loading = false;
   }
 }
 </script>
