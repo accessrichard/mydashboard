@@ -13,6 +13,7 @@
       <v-data-table :headers="headers" :items="workItems" :search="search" hide-actions>
         <template v-slot:items="props">
           <td>{{ props.item.id }}</td>
+          <td>{{ props.item.workItemType }}</td>
           <td>{{ props.item.state }}</td>
           <td>{{ props.item.assignedTo }}</td>
           <td>{{ props.item.title }}</td>
@@ -58,6 +59,7 @@ export default class WorkList extends Vue {
       sortable: false,
       value: "id"
     },
+    { text: "Type", value: "workItemType" },
     { text: "Status", value: "state" },
     { text: "Assigned To", value: "assignedTo" },
     { text: "Title", value: "title" },

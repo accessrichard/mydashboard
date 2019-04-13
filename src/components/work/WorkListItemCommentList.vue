@@ -11,7 +11,7 @@
           </v-list>
         </v-flex>
         <v-flex v-for="(comment, i) in comments" :key="i">
-          {{comment.revisedBy}}
+          {{comment.revisedBy.name}} - {{new Date(comment.revisedDate).toLocaleDateString()}}
           <div v-html="comment.text"></div>
         </v-flex>
       </v-layout>

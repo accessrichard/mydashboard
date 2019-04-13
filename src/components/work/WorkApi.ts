@@ -23,7 +23,7 @@ export default class WorkApi {
   }
 
   public async getWorkItem(id: number): Promise<IWorkItemFields> {
-    return this.httpService.get<IWorkItemFields>(this.basePath + id).then(resp => {
+    return this.httpService.get<IWorkItemFields>(this.basePath + "item/" + id).then(resp => {
       return resp.data;
     });
   }

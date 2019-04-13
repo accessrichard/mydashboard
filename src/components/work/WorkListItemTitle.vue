@@ -10,9 +10,6 @@
       <v-btn icon v-else>
         <v-icon>work_outline</v-icon>
       </v-btn>
-      <v-btn icon to="/work">
-        <v-icon>chevron_left</v-icon>
-      </v-btn>
     </v-card-title>
   </v-layout>
 </template>
