@@ -1,5 +1,7 @@
 # dashboard
 
+A personal homepage used to learn Vue.js and Typescript.
+
 ## Project setup
 ```
 npm install
