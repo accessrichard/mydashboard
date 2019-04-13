@@ -1,4 +1,4 @@
-# dashboard
+# Personal Dashboard
 
 A personal homepage used to learn Vue.js and Typescript.
 
