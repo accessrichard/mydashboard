@@ -1,14 +1,14 @@
 <template>
   <v-layout>
     <v-layout row>
-      <v-flex xs1 pa-3>
+      <v-flex xs1 pa-3 hidden-sm-and-down>
         <v-icon>info</v-icon>
       </v-flex>
       <v-flex>
         <v-layout column>
-          <v-layout row align-start justify-start fill-height pa-0>
-            <v-flex xs4>
-              <v-list two-line class="zero-padding pt-0">
+          <v-layout row align-start justify-start fill-height pb-4 wrap>
+            <v-flex xs12 sm4>
+              <v-list dense two-line class="zero-padding pt-0">
                 <v-list-tile>
                   <v-list-tile-content>
                     <v-list-tile-sub-title>Assigned To</v-list-tile-sub-title>
@@ -21,10 +21,16 @@
                     <v-list-tile-title>{{workItem.areaPath}}</v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
+                 <v-list-tile>
+                  <v-list-tile-content>
+                    <v-list-tile-sub-title>Iteration</v-list-tile-sub-title>
+                    <v-list-tile-title>{{workItem.iterationPath}}</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
               </v-list>
             </v-flex>
-            <v-flex xs4>
-              <v-list two-line class="zero-padding pt-0">
+            <v-flex xs12 sm4>
+              <v-list dense two-line class="zero-padding pt-0">
                 <v-list-tile>
                   <v-list-tile-content>
                     <v-list-tile-sub-title>Type</v-list-tile-sub-title>
@@ -39,9 +45,9 @@
                 </v-list-tile>
               </v-list>
             </v-flex>
-            <v-flex xs4>
-              <v-list two-line class="zero-padding pt-0">
-                   <v-list-tile>
+            <v-flex xs12 sm4>
+              <v-list dense two-line class="zero-padding pt-0">
+                <v-list-tile>
                   <v-list-tile-content>
                     <v-list-tile-sub-title>Tags</v-list-tile-sub-title>
                     <v-list-tile-title>{{workItem.tags}}</v-list-tile-title>

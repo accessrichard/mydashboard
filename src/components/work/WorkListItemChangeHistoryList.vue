@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-layout row>
-      <v-flex xs1 pa-3>
+      <v-flex xs1 pa-3 hidden-sm-and-down>
         <v-icon>history</v-icon>
       </v-flex>
       <v-flex>

@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex xs1 pa-3>
+    <v-flex xs1 pa-3 hidden-sm-and-down>
       <v-icon>work</v-icon>
     </v-flex>
     <v-flex>
