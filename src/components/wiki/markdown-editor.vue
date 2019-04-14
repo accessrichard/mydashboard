@@ -15,11 +15,19 @@
       </v-flex>
       <v-flex xs12 v-bind:class="{ sm6: !isEditorVisible }" v-if="!isPreviewVisible">
         <v-card class="full-height">
-          <v-card-text>
-            <v-textarea rows="18" v-model="markdownContent"></v-textarea>
-          </v-card-text>
+          <v-card-title>
+            <v-textarea
+              :rows="rows"
+              v-model="markdownContent"
+              v-on:keyup.enter="growTextArea"
+            ></v-textarea>
+          </v-card-title>
           <v-card-actions>
-            <v-btn flat color="orange" v-on:click="$emit('markdown-editor-save', markdownContent)">Save</v-btn>
+            <v-btn
+              flat
+              color="orange"
+              v-on:click="$emit('markdown-editor-save', markdownContent)"
+            >Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -43,6 +51,8 @@ import _ from "lodash";
 @Component
 export default class MarkdownEditor extends Vue {
   @Prop(String) public content!: string;
+
+  public rows: number = 18;
 
   private readonly editorBtn = 0;
 
@@ -106,6 +116,17 @@ export default class MarkdownEditor extends Vue {
   public updated() {
     if (this.content.length && this.markdown === null) {
       this.htmlContent = this.content;
+    }
+  }
+
+  //// TODO: v-textarea auto-grow should work but then the page scrollbar
+  //// starts jumping around....
+  public growTextArea(e: Event) {
+    const scrollHeight = (e.srcElement as any).scrollHeight;
+    const lineHeight = 18;
+    const defaultHeight = 350;
+    if (scrollHeight > defaultHeight) {
+      this.rows = Math.ceil(scrollHeight / lineHeight);
     }
   }
 

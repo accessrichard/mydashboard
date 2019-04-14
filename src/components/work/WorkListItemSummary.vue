@@ -6,11 +6,6 @@
       </v-flex>
       <v-flex>
         <v-layout column>
-          <v-flex>
-            <v-list class="zero-padding pa-0">
-              <v-list-tile-sub-title>Summary</v-list-tile-sub-title>
-            </v-list>
-          </v-flex>
           <v-layout row align-start justify-start fill-height pa-0>
             <v-flex xs4>
               <v-list two-line class="zero-padding pt-0">

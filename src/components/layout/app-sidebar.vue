@@ -10,7 +10,7 @@
         </v-list-tile-content>
       </v-list-tile>
 
-      <v-list-group prepend-icon="http">
+      <v-list-group prepend-icon="link">
         <template v-slot:activator>
           <v-list-tile>
             <v-list-tile-title>Links</v-list-tile-title>
@@ -21,7 +21,7 @@
 
       <v-list-tile to="/contact">
         <v-list-tile-action>
-          <v-icon>contact_mail</v-icon>
+          <v-icon>contacts</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Contact</v-list-tile-title>
@@ -29,7 +29,7 @@
       </v-list-tile>
       <v-list-tile to="/todo">
         <v-list-tile-action>
-          <v-icon>details</v-icon>
+          <v-icon>assignment</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Todo</v-list-tile-title>

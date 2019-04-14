@@ -35,7 +35,7 @@
           </v-container>
         </template>
         <v-card>
-          <v-card-text>{{workItem.description}}</v-card-text>
+          <v-card-text v-html="workItem.description"></v-card-text>
         </v-card>
       </v-expansion-panel-content>
     </v-expansion-panel>

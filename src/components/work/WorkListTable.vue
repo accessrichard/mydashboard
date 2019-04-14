@@ -25,6 +25,12 @@
           <td>{{ props.item.assignedTo }}</td>
           <td>{{ props.item.title }}</td>
           <td class="justify-center layout px-0">
+            <v-icon
+              small
+              class="mr-2"
+              v-on:click="addTodo(props.item)"
+              :disabled="pinnedList.includes(props.item.id)"
+            >playlist_add</v-icon>
             <v-icon small class="mr-2" v-on:click="openWorkItem(props.item)">open_in_new</v-icon>
             <v-icon small class="mr-2" v-on:click="openDialog(props.item)">open_in_browser</v-icon>
           </td>
@@ -43,9 +49,10 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { IWorkItemFields } from "@/types";
+import { IWorkItemFields, ITodo } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 import WorkListItemCard from "@/components/work/WorkListItemCard.vue";
+import todoStore from "@/components/todo/TodoStore";
 
 @Component({
   components: {
@@ -60,6 +67,8 @@ export default class WorkList extends Vue {
   public search: string = "";
 
   public loading: boolean = true;
+
+  public pinnedList: number[] = [];
 
   public headers: any = [
     {
@@ -84,9 +93,16 @@ export default class WorkList extends Vue {
     this.service = new WorkApi();
   }
 
+  public addTodo(workItem: IWorkItemFields) {
+    todoStore.addTodo({
+      title: workItem.id + " - " + workItem.title
+    } as ITodo);
+
+    this.pinnedList.push(workItem.id || 0);
+  }
+
   public openDialog(workItem: IWorkItemFields) {
     this.id = workItem.id || 0;
-    console.log(this.id);
     this.isWorkItemVisible = true;
   }
 
