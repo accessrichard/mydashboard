@@ -16,12 +16,12 @@ export interface ISideBar {
 }
 
 export interface ITodo {
-  createDate: Date;
-  completeDate: Date;
-  content: string;
-  id: number;
+  createDate?: Date;
+  completeDate?: Date;
+  id?: number;
   title: string;
-  type: string;
+  routerLinkUrl?: string;
+  urlName?: string;
 }
 
 export interface IContact {

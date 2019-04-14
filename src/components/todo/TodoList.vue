@@ -10,11 +10,8 @@
         autocomplete="off"
         placeholder="Add new todo"
         v-model="newTodo"
-        @keyup.enter="addTodo"
+        v-on:keyup.enter="addTodo"
       ></v-text-field>
-      <v-flex xs2 d-flex>
-        <v-select :items="types" label></v-select>
-      </v-flex>
     </v-list-tile>
     
 
@@ -23,7 +20,10 @@
         <v-icon v-on:click="removeTodo(todo)">remove_circle_outline</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title v-text="todo.title"></v-list-tile-title>
+        <v-list-tile-title>
+            <router-link v-if="todo.routerLinkUrl" :to="todo.routerLinkUrl"><a>{{todo.urlName}}</a></router-link>
+            {{todo.title}}
+        </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
 
@@ -41,8 +41,6 @@ export default class TodoList extends Vue {
   get todos(): ITodo[] {
     return todoStore.todos || ([] as ITodo[]);
   }
-
-  public types: string[] = ["text", "external"];
 
   public newTodo: string = "";
 

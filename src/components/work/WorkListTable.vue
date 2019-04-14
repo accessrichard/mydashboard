@@ -95,7 +95,9 @@ export default class WorkList extends Vue {
 
   public addTodo(workItem: IWorkItemFields) {
     todoStore.addTodo({
-      title: workItem.id + " - " + workItem.title
+      title: workItem.title,
+      routerLinkUrl: "/work/" + workItem.id,
+      urlName: workItem.id
     } as ITodo);
 
     this.pinnedList.push(workItem.id || 0);
