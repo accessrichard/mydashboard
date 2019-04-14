@@ -23,7 +23,7 @@ const router = new Router({
       path: '/links',
       name: 'links',
       component: () =>
-        import(/* webpackChunkName: 'wiki' */ '@/components/links/Links.vue')
+        import(/* webpackChunkName: 'wiki' */ '@/components/link/Links.vue')
     },
     {
       path: '/wiki/edit/:page',

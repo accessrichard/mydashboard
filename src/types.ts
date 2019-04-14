@@ -65,6 +65,23 @@ export interface IIdentityReference {
   url?: string;
 }
 
+export interface IDates {
+  startDate: string;
+  finishDate: string;
+}
+
+export interface IIterationPath {
+  id: string;
+  name: string;
+  path: string;
+  attributes: IDates;
+}
+
+export interface IIterationSetting {
+  isOn: boolean;
+  iteration: IIterationPath;
+}
+
 export interface IWorkItemRelation {
   rel: string;
   url: string;
@@ -133,4 +150,16 @@ export interface ILinkCategory {
 export interface ILink {
   href: string;
   text: string;
+}
+
+export interface IWorkFilter {
+  iterations?: string[];
+  user?: string;
+  statuses?: string[];
+  types?: string[];
+}
+
+export interface ISelectedWork {
+  name: string;
+  isOn: boolean;
 }

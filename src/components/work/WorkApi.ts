@@ -1,5 +1,5 @@
 import HttpService from '@/api/HttpService';
-import { IWorkItemFields } from '@/types';
+import { IIterationPath, IWorkItemFields, IWorkFilter } from '@/types';
 
 export default class WorkApi {
   private httpService: HttpService;
@@ -16,6 +16,12 @@ export default class WorkApi {
     });
   }
 
+  public async query(filter: IWorkFilter): Promise<IWorkItemFields[]> {
+    return this.httpService.post(this.basePath + "query", { filter }).then(resp => {
+      return resp.data;
+    });
+  }
+
   public async getMyWork(): Promise<IWorkItemFields[]> {
     return this.httpService.get<IWorkItemFields[]>(this.basePath + "mywork").then(resp => {
       return resp.data;
@@ -24,6 +30,12 @@ export default class WorkApi {
 
   public async getWorkItem(id: number): Promise<IWorkItemFields> {
     return this.httpService.get<IWorkItemFields>(this.basePath + "item/" + id).then(resp => {
+      return resp.data;
+    });
+  }
+
+  public async getCurrentIterations(): Promise<IIterationPath[]> {
+    return this.httpService.get<IIterationPath[]>(this.basePath + "iterations").then(resp => {
       return resp.data;
     });
   }

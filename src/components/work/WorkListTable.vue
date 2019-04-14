@@ -7,8 +7,23 @@
       <v-card-title>
         <h3 class="headline mb-0">Work</h3>
         <v-spacer></v-spacer>
-        <v-checkbox color="primary" v-model="isMyWorkOnly" :label="`My Work Only`"></v-checkbox>
         <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
+        <v-dialog
+          v-model="isSetttingsOpen"
+          fullscreen
+          hide-overlay
+          transition="dialog-bottom-transition"
+        >
+          <template v-slot:activator="{ on }">
+            <v-btn icon v-on="on">
+              <v-icon>settings</v-icon>
+            </v-btn>
+          </template>
+          <work-settings-card
+            @update="isSetttingsOpen = false; loadTable()"
+            v-on:close="isSetttingsOpen = false"
+          ></work-settings-card>
+        </v-dialog>
       </v-card-title>
       <v-data-table
         :headers="headers"
@@ -50,14 +65,24 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { IWorkItemFields, ITodo } from "@/types";
+import {
+  IWorkItemFields,
+  ITodo,
+  IIterationPath,
+  IIterationSetting,
+  ISelectedWork,
+  IWorkFilter
+} from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 import WorkListItemCard from "@/components/work/WorkListItemCard.vue";
+import WorkSettingsCard from "@/components/work/WorkSettingsCard.vue";
 import todoStore from "@/components/todo/TodoStore";
+import workStore from "@/components/work/WorkStore";
 
 @Component({
   components: {
-    WorkListItemCard
+    WorkListItemCard,
+    WorkSettingsCard
   }
 })
 export default class WorkList extends Vue {
@@ -69,17 +94,7 @@ export default class WorkList extends Vue {
 
   public loading: boolean = true;
 
-  get isMyWorkOnly(): boolean {
-    return this.$data.myWorkOnly;
-  }
-
-  set isMyWorkOnly(val: boolean) {
-    if (this.$data.myWorkOnly !== val) {
-      this.loadTable();
-    }
-
-    this.$data.myWorkOnly = val;
-  }
+  public isSetttingsOpen: boolean = false;
 
   public pinnedList: number[] = [];
 
@@ -100,8 +115,6 @@ export default class WorkList extends Vue {
   public id: number = 0;
 
   private service: WorkApi;
-
-  private myWorkOnly: boolean = true;
 
   constructor() {
     super();
@@ -136,11 +149,15 @@ export default class WorkList extends Vue {
 
   private async loadTable() {
     this.loading = true;
-    if (this.isMyWorkOnly) {
-      this.workItems = await this.service.getMyWork();
-    } else {
-      this.workItems = await this.service.getWork();
-    }
+
+    const filter = {
+      user: workStore.user,
+      iterations: workStore.selectedIterations.map(x => x.iteration.path),
+      statuses: workStore.selectedStatuses.map(x => x.name),
+      types: workStore.selectedTypes.map(x => x.name)
+    } as IWorkFilter;
+
+    this.workItems = await this.service.query(filter);
 
     this.loading = false;
   }
