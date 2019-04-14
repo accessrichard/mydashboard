@@ -3,11 +3,11 @@
     <v-dialog v-model="isWorkItemVisible" width="80%">
       <work-list-item-card v-bind:id="id" v-on:close="isWorkItemVisible = false"></work-list-item-card>
     </v-dialog>
-
     <v-card>
       <v-card-title>
-        Work
+        <h3 class="headline mb-0">Work</h3>
         <v-spacer></v-spacer>
+        <v-checkbox color="primary" v-model="isMyWorkOnly" :label="`My Work Only`"></v-checkbox>
         <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
       </v-card-title>
       <v-data-table
@@ -16,6 +16,7 @@
         :loading="loading"
         :search="search"
         hide-actions
+        class="v-table__overflow_hidden"
       >
         <v-progress-linear v-slot:progress color="primary" indeterminate></v-progress-linear>
         <template v-slot:items="props">
@@ -68,6 +69,18 @@ export default class WorkList extends Vue {
 
   public loading: boolean = true;
 
+  get isMyWorkOnly(): boolean {
+    return this.$data.myWorkOnly;
+  }
+
+  set isMyWorkOnly(val: boolean) {
+    if (this.$data.myWorkOnly !== val) {
+      this.loadTable();
+    }
+
+    this.$data.myWorkOnly = val;
+  }
+
   public pinnedList: number[] = [];
 
   public headers: any = [
@@ -87,6 +100,8 @@ export default class WorkList extends Vue {
   public id: number = 0;
 
   private service: WorkApi;
+
+  private myWorkOnly: boolean = true;
 
   constructor() {
     super();
@@ -116,9 +131,28 @@ export default class WorkList extends Vue {
   }
 
   public async created() {
+    this.loadTable();
+  }
+
+  private async loadTable() {
     this.loading = true;
-    this.workItems = await this.service.getWork();
+    if (this.isMyWorkOnly) {
+      this.workItems = await this.service.getMyWork();
+    } else {
+      this.workItems = await this.service.getWork();
+    }
+
     this.loading = false;
   }
 }
 </script>
+
+<style>
+.v-table__overflow_hidden {
+  overflow-x: hidden;
+}
+
+.v-table__overflow_hidden .v-table__overflow {
+  overflow-x: hidden;
+}
+</style>

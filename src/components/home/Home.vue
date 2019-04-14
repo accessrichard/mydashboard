@@ -8,12 +8,7 @@
         <todos></todos>
       </v-flex>
       <v-flex xs12>
-        <v-card>
-          <v-card-title primary-title>
-            <h3 class="headline mb-0">Work</h3>
-          </v-card-title>
           <work></work>
-        </v-card>
       </v-flex>
       <v-flex xs12>
         <contacts></contacts>
@@ -27,7 +22,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Todo from "@/components/todo/Todo.vue";
 import Contact from "@/components/contact/Contact.vue";
 import Read from "@/components/wiki/Read.vue";
-import Work from "@/components/work/WorkList.vue";
+import Work from "@/components/work/WorkListTable.vue";
 
 @Component({
   name: "Home",
