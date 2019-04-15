@@ -26,7 +26,7 @@
 
 
 <script lang='ts'>
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import { IWorkItemFields } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
 import WorkListItemAttachmentList from "@/components/work/WorkListItemAttachmentList.vue";
@@ -63,10 +63,15 @@ export default class WorkListItemCard extends Vue {
     return typeof this.$route.params.id === "undefined";
   }
 
-  public async created() {
-    const id = this.getId();
-    if (id) {
-      this.workItem = await this.service.getWorkItem(this.getId());
+  @Watch("id")
+  public async onIdChanged(val: number, oldVal: number){
+    if (val === oldVal || val === 0) {
+      return;
+    }
+
+    const localId = this.getId();
+    if (localId){
+      this.workItem = await this.service.getWorkItem(localId);
     }
   }
 

@@ -1,14 +1,12 @@
 <template>
-  <v-layout row align-center="">
-    <v-flex>{{new Date(history.changedDate).toLocaleDateString()}}</v-flex>
-    <v-flex>{{history.changedBy}}</v-flex>
-    <v-flex>
-      {{revision.key}}
+  <v-layout row align-center>
+    <v-flex xs4>{{new Date(history.changedDate).toLocaleDateString()}}</v-flex>
+    <v-flex xs4>{{history.changedBy}}</v-flex>
+    <v-flex xs4>
       <v-btn icon v-on:click="$emit('openRevision', revision)">
-        <v-icon>
-          open_in_new
-        </v-icon>        
-        </v-btn>
+        <v-icon small>open_in_new</v-icon>
+      </v-btn>
+      {{revision.key}}
     </v-flex>
   </v-layout>
 </template>
