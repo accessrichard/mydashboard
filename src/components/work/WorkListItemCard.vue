@@ -59,29 +59,20 @@ export default class WorkListItemCard extends Vue {
     this.service = new WorkApi();
   }
 
-  public isDialog(): boolean {
-    return typeof this.$route.params.id === "undefined";
-  }
-
   @Watch("id")
-  public async onIdChanged(val: number, oldVal: number){
+  public async onIdChanged(val: number, oldVal: number) {
     if (val === oldVal || val === 0) {
       return;
     }
 
-    const localId = this.getId();
-    if (localId){
-      this.workItem = await this.service.getWorkItem(localId);
+    if (this.id) {
+      this.workItem = await this.service.getWorkItem(this.id);
     }
   }
 
-  private getId(): number | any {
-    if (this.id > 0) {
-      return this.id;
-    }
-
-    if (!this.isDialog()) {
-      return parseInt(this.$route.params.id, 10);
+  public async created() {
+    if (this.id !== 0) {
+      this.workItem = await this.service.getWorkItem(this.id);
     }
   }
 }
