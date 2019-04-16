@@ -1,5 +1,5 @@
 <template>
-  <v-menu offset-y v-model="menu" :close-on-content-click="false">
+  <v-menu attach="#weather" left offset-y v-model="menu" :close-on-content-click="false">
     <template v-slot:activator="{ on }">
       <v-btn slot="activator" v-on="on" flat>Weather</v-btn>
     </template>

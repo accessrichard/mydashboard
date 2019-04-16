@@ -8,7 +8,7 @@
 
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <weather></weather>
+      <weather id="weather"></weather>
     </v-toolbar-items>
   </v-toolbar>
 </template>

@@ -2,7 +2,7 @@
   <v-container grid-list-md>
     <v-layout row wrap>
       <v-flex xs12>
-        <read v-bind:page="page"></read>
+        <view-page v-bind:page="page"></view-page>
       </v-flex>
       <v-flex xs12>
         <todos></todos>
@@ -21,7 +21,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Todo from "@/components/todo/Todo.vue";
 import Contact from "@/components/contact/Contact.vue";
-import Read from "@/components/wiki/Read.vue";
+import ViewPage from "@/components/wiki/ViewPage.vue";
 import Work from "@/components/work/WorkListTable.vue";
 
 @Component({
@@ -29,7 +29,7 @@ import Work from "@/components/work/WorkListTable.vue";
   components: {
     todos: Todo,
     contacts: Contact,
-    Read,
+    ViewPage,
     Work
   }
 })

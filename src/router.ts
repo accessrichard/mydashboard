@@ -35,7 +35,7 @@ const router = new Router({
       path: '/wiki/read/:page',
       name: 'wiki-read',
       component: () =>
-        import(/* webpackChunkName: 'wiki' */ '@/components/wiki/Read.vue')
+        import(/* webpackChunkName: 'wiki' */ '@/components/wiki/View.vue')
     },
     {
       path: '/wiki/toc',
