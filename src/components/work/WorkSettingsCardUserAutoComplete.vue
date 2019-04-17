@@ -9,9 +9,7 @@
       multiple
       deletable-chips
       class="px-3"
-    >
       clearable
-      label="Search"
       >
       <template v-slot:append-outer>
         <v-slide-x-reverse-transition mode="out-in">
