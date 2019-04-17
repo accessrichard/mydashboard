@@ -52,7 +52,6 @@ export default class WorkListItemChangeHistoryList extends Vue {
   public htmlDialog: IHtmlDialog = {} as IHtmlDialog;
 
   public openRevision(e: IKeyValue) {
-    console.log(e);
     this.htmlDialog = {
       title: e.key,
       html: e.value,

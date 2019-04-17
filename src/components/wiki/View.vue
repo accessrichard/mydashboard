@@ -1,5 +1,7 @@
 <template>
-  <ViewPage :page="page"></ViewPage>
+  <v-container>
+    <ViewPage :page="page"></ViewPage>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -13,10 +15,9 @@ import wikiStore from "@/components/wiki/WikiStore";
   }
 })
 export default class Read extends Vue {
-
   public created(): void {
-    if (this.$route.params.page){
-       wikiStore.getPage(this.$route.params.page);
+    if (this.$route.params.page) {
+      wikiStore.getPage(this.$route.params.page);
     }
   }
 }

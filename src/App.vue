@@ -4,7 +4,7 @@
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
-import Layout from '@/components/layout/main';
+import Layout from '@/components/layout/Layout.vue';
 
 @Component({
   name: 'App',

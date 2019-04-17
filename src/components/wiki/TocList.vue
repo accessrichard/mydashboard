@@ -38,7 +38,7 @@ export default class TocList extends Vue {
 
   public isWikiDialogVisible: boolean = false;
 
-  public page!: string;
+  public page: string = "";
 
   public openViewDialog(page: string) {
     this.page = page;

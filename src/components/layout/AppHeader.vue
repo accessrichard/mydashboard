@@ -1,5 +1,5 @@
  <template>
-  <v-toolbar color="primary" dark fixed app>
+  <v-toolbar color="primary" dark fixed app :scroll-off-screen="true" >
     <v-toolbar-side-icon v-on:click.stop="toggleLeftSidebar()"></v-toolbar-side-icon>
 
   <v-toolbar-title>
@@ -8,7 +8,9 @@
 
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <weather id="weather"></weather>
+      <keep-alive>
+      <header-frame id="header-frame"></header-frame>
+      </keep-alive>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -16,12 +18,12 @@
 
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
-import Weather from "@/components/link/Weather.vue";
+import HeaderFrame from "@/components/layout/AppEmbeddedFrame.vue";
 import layoutStore from "@/components/layout/LayoutStore";
 
 @Component({
   components: {
-    Weather
+    HeaderFrame
   }
 })
 export default class AppHeader extends Vue {
