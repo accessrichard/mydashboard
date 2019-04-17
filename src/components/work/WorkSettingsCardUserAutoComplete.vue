@@ -1,10 +1,12 @@
 <template>
-  <div>
     <v-autocomplete
-      v-model="selectedUser"
+      v-model="selectedUsers"
       :items="members"
       :readonly="readonly"
       :loading="isLoading"
+      small-chips
+      multiple
+      deletable-chips
     >
       clearable
       label="Search"
@@ -20,7 +22,6 @@
         </v-slide-x-reverse-transition>
       </template>
     </v-autocomplete>
-  </div>
 </template>
 
 
@@ -35,13 +36,13 @@ export default class WorkSettingsCardAutoComplete extends Vue {
   public isEditing: boolean = false;
   public isLoading: boolean = false;
   public search: string = "";
-  private model: string = "";
+  private model: any = [];
 
-  get selectedUser() {
+  get selectedUsers() {
     return this.model;
   }
 
-  set selectedUser(val: string) {
+  set selectedUsers(val: string) {
     this.model = val;
     this.$emit("selected", val);
   }

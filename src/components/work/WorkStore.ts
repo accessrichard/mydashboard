@@ -22,7 +22,7 @@ class Work extends VuexModule {
 
     public members: string[] = [];
 
-    public user: string = "@me";
+    public selectedUsers: string[] = ["@me"];
 
     get selectedIterations(): IIterationSetting[] {
         return this.iterations
@@ -158,8 +158,8 @@ class Work extends VuexModule {
     }
 
     @Mutation
-    public SET_USER(user: string) {
-        this.user = user;
+    public SET_USERS(users: string[]) {
+        this.selectedUsers = users;
     }
 
     @Mutation

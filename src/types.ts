@@ -154,7 +154,7 @@ export interface ILink {
 
 export interface IWorkFilter {
   iterations?: string[];
-  user?: string;
+  users?: string[];
   statuses?: string[];
   types?: string[];
 }

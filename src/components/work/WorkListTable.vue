@@ -151,7 +151,7 @@ export default class WorkList extends Vue {
     this.loading = true;
 
     const filter = {
-      user: workStore.user,
+      users: workStore.selectedUsers,
       iterations: workStore.selectedIterations.map(x => x.iteration.path),
       statuses: workStore.selectedStatuses.map(x => x.name),
       types: workStore.selectedTypes.map(x => x.name)

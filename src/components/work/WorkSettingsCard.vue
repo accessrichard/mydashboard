@@ -22,11 +22,9 @@
             </v-list-tile-action>
             <v-list-tile-title>Only My Work</v-list-tile-title>
           </v-list-tile>
-          <v-list-tile v-if="!isMyWorkOnly">
-            <v-list-tile-action>
-              <user-auto-complete v-on:selected="selectUser($event)"></user-auto-complete>
-            </v-list-tile-action>
-          </v-list-tile>
+          <div v-if="!isMyWorkOnly">
+              <user-auto-complete v-on:selected="selectUsers($event)"></user-auto-complete>
+          </div>
 
           <v-subheader>Iteration</v-subheader>
 
@@ -107,15 +105,15 @@ export default class WorkList extends Vue {
   }
 
   get isMyWorkOnly(): boolean {
-    return workStore.user === "@me";
+    return workStore.selectedUsers.includes("@me");
   }
 
   set isMyWorkOnly(val: boolean) {
-    this.$store.commit("work/SET_USER", val ? "@me" : "");
+    this.$store.commit("work/SET_USERS", val ? ["@me"] : []);
   }
 
-  public selectUser(user: string) {
-    this.$store.commit("work/SET_USER", "'" + user + "'");
+  public selectUsers(users: string[]) {  
+    this.$store.commit("work/SET_USERS", users);
   }
 
   public toggleStatus(setting: ISelectedWork, e: any) {
