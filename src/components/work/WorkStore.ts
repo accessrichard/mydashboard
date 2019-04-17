@@ -20,6 +20,8 @@ class Work extends VuexModule {
 
     public iterations: IIterationSetting[] = [];
 
+    public members: string[] = [];
+
     public user: string = "@me";
 
     get selectedIterations(): IIterationSetting[] {
@@ -35,6 +37,19 @@ class Work extends VuexModule {
         return this.types.filter(x => x.isOn);
     }
 
+    @Action({ commit: 'SET_MEMBERS' })
+    public async getMembers(): Promise<string[]> {
+        if (this.members.length > 0) {
+            return this.members;
+        }
+
+        return await service.getMembers();
+    }
+
+    @Mutation
+    public SET_MEMBERS(members: string[]) {
+        this.members = members;
+    }
 
     @Action({ commit: 'SET_ITERATIONS' })
     public async getIterations(): Promise<IIterationSetting[]> {

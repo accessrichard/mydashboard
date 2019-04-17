@@ -39,4 +39,10 @@ export default class WorkApi {
       return resp.data;
     });
   }
+
+  public async getMembers(): Promise<string[]> {
+    return this.httpService.get<string[]>(this.basePath + "members").then(resp => {
+      return resp.data;
+    });
+  }
 }

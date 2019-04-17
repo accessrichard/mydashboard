@@ -38,7 +38,7 @@ export default class Read extends Vue {
 
   @Watch("page")
   public onPageChange(newPage: string, oldPage: string) {
-    if (newPage == oldPage || newPage === "") {
+    if (newPage === oldPage || newPage === "") {
       return;
     }
 

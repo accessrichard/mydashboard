@@ -12,7 +12,7 @@
     </v-toolbar>
 
     <v-layout row>
-      <v-flex sm6 xs12>
+      <v-flex md4 sm6 xs12>
         <v-list>
           <v-subheader>User</v-subheader>
 
@@ -21,6 +21,11 @@
               <v-switch v-model="isMyWorkOnly" color="primary"></v-switch>
             </v-list-tile-action>
             <v-list-tile-title>Only My Work</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-if="!isMyWorkOnly">
+            <v-list-tile-action>
+              <user-auto-complete v-on:selected="selectUser($event)"></user-auto-complete>
+            </v-list-tile-action>
           </v-list-tile>
 
           <v-subheader>Iteration</v-subheader>
@@ -37,7 +42,7 @@
           </v-list-tile>
         </v-list>
       </v-flex>
-      <v-flex sm6 xs12>
+      <v-flex md4 sm6 xs12>
         <v-list>
           <v-subheader>Type</v-subheader>
           <v-list-tile v-for="(type, i) in types" :key="i">
@@ -51,7 +56,11 @@
         <v-list>
           <v-list-tile v-for="(status, i) in statuses" :key="i">
             <v-list-tile-action>
-              <v-switch :input-value="status.isOn" @change="toggleStatus(status, $event)" color="primary"></v-switch>
+              <v-switch
+                :input-value="status.isOn"
+                @change="toggleStatus(status, $event)"
+                color="primary"
+              ></v-switch>
             </v-list-tile-action>
             <v-list-tile-title>{{status.name}}</v-list-tile-title>
           </v-list-tile>
@@ -73,13 +82,13 @@ import {
   IWorkFilter
 } from "@/types";
 import WorkApi from "@/components/work/WorkApi";
-import WorkListItemCard from "@/components/work/WorkListItemCard.vue";
+import UserAutoComplete from "@/components/work/WorkSettingsCardUserAutoComplete.vue";
 import todoStore from "@/components/todo/TodoStore";
 import workStore from "@/components/work/WorkStore";
 
 @Component({
   components: {
-    WorkListItemCard
+    UserAutoComplete
   }
 })
 export default class WorkList extends Vue {
@@ -103,6 +112,10 @@ export default class WorkList extends Vue {
 
   set isMyWorkOnly(val: boolean) {
     this.$store.commit("work/SET_USER", val ? "@me" : "");
+  }
+
+  public selectUser(user: string) {
+    this.$store.commit("work/SET_USER", "'" + user + "'");
   }
 
   public toggleStatus(setting: ISelectedWork, e: any) {
