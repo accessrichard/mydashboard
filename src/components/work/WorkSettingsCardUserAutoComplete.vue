@@ -13,12 +13,6 @@
       >
       <template v-slot:append-outer>
         <v-slide-x-reverse-transition mode="out-in">
-          <v-icon
-            :key="`icon-${isEditing}`"
-            :color="isEditing ? 'success' : 'info'"
-            @click="isEditing = !isEditing"
-            v-text="isEditing ? 'mdi-check-outline' : 'mdi-circle-edit-outline'"
-          ></v-icon>
         </v-slide-x-reverse-transition>
       </template>
     </v-autocomplete>
