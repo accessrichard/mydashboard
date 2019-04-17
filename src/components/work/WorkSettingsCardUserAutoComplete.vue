@@ -1,12 +1,14 @@
 <template>
-    <v-autocomplete
+    <v-autocomplete 
       v-model="selectedUsers"
       :items="members"
       :readonly="readonly"
       :loading="isLoading"
+      label="Select Users"
       small-chips
       multiple
       deletable-chips
+      class="px-3"
     >
       clearable
       label="Search"
