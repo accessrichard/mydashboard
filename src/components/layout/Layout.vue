@@ -2,7 +2,6 @@
   <v-app>
     <app-action-button v-if="$route.name === 'home_disabled'"></app-action-button>
     <app-header v-else></app-header>
-
     <app-sidebar></app-sidebar>
     <app-content></app-content>
   </v-app>

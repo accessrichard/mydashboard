@@ -168,9 +168,9 @@ export default class WorkList extends Vue {
     const results = await this.service.query(filter).catch((error: Error) => {
       this.workItems = [];
       console.log(error);
-    })
+    });
 
-    if (results instanceof Error === false){
+    if (results instanceof Error === false) {
       this.workItems = results as IWorkItemFields[];
     }
 

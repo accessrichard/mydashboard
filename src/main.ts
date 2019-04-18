@@ -5,7 +5,7 @@ import router from './router';
 import store from '@/lib/store';
 import 'vuetify/dist/vuetify.min.css';
 import Vuelidate from 'vuelidate';
-import { handleVueError, handlePromiseError, handleWindowError } from "./lib/errorHandler"
+import { handleVueError, handlePromiseError, handleWindowError } from "./lib/errorHandler";
 
 Vue.config.errorHandler = handleVueError;
 handlePromiseError();

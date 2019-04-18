@@ -56,7 +56,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-group no-action sub-group value="true">
+        <v-list-group no-action sub-group>
           <template v-slot:activator>
             <v-list-tile>
               <v-list-tile-title>Pages</v-list-tile-title>

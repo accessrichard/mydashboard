@@ -23,6 +23,11 @@
             ></v-textarea>
           </v-card-title>
           <v-card-actions>
+             <v-btn
+              flat
+              color="orange"
+              v-on:click="$emit('markdown-editor-delete')"
+            >Delete</v-btn>
             <v-btn
               flat
               color="orange"

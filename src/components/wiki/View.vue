@@ -15,10 +15,9 @@ import wikiStore from "@/components/wiki/WikiStore";
   }
 })
 export default class Read extends Vue {
-  public created(): void {
-    if (this.$route.params.page) {
-      wikiStore.getPage(this.$route.params.page);
-    }
+
+  get page(): string {
+    return this.$route.params.page;
   }
 }
 </script>

@@ -14,28 +14,14 @@ const service = new WikiApi();
 class Wiki extends VuexModule {
   public pages: string[] = [];
 
-  public selectedPageContent: string = '';
-
   @Action({ commit: 'GET_PAGES' })
   public async getPages(): Promise<string[]> {
+    if (this.pages.length > 0) {
+      return this.pages;
+    }
+
     const pages = await service.getPages();
     return pages;
-  }
-
-  @Action({ commit: 'GET_PAGE' })
-  public async getPage(page: string): Promise<string> {
-    const p = await service.getPage(page).catch(err => {
-      return '# Create New Page\n\n Your page was not found.';
-    });
-
-    return p;
-  }
-
-  @Action({ commit: 'SAVE_PAGE' })
-  public async savePage(obj: any): Promise<void> {
-    return service.savePage(obj.page, obj.content).then(newPage => {
-      return obj.page;
-    });
   }
 
   @Action({ commit: 'REMOVE_PAGE' })
@@ -51,12 +37,7 @@ class Wiki extends VuexModule {
   }
 
   @Mutation
-  public GET_PAGE(content: string) {
-    this.selectedPageContent = content;
-  }
-
-  @Mutation
-  public SAVE_PAGE(page: string) {
+  public ADD_PAGE(page: string) {
     if (
       this.pages.filter(p => {
         return p === page;

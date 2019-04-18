@@ -3,13 +3,19 @@
     <v-layout row>
       <v-flex xs12>
         <v-card>
-          <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">Table Of Contents</h3>
-            </div>
+          <v-card-title>
+            <h3 class="headline mb-0">Table Of Contents</h3>
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model="search"
+              append-icon="search"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
           </v-card-title>
           <v-list dense>
-          <table-of-contents-list></table-of-contents-list>
+            <table-of-contents-list :filter="search"></table-of-contents-list>
           </v-list>
           <create></create>
         </v-card>
@@ -34,15 +40,9 @@ import Create from "@/components/wiki/Create.vue";
   }
 })
 export default class Toc extends Vue {
-  get pages(): string[] {
-    return wikiStore.pages;
-  }
-
   public newPageName: string = "";
 
-  constructor() {
-    super();
-  }
+  public search: string = "";
 
   public toEdit(): void {
     router.push({
@@ -53,12 +53,6 @@ export default class Toc extends Vue {
     });
 
     this.newPageName = "";
-  }
-
-  public created() {
-    if (wikiStore.pages.length === 0) {
-      wikiStore.getPages();
-    }
   }
 }
 </script>

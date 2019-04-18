@@ -5,7 +5,7 @@
     </v-card-title>
     <v-list-tile-content>
       <div class="pa-3">
-        <div v-html="content"></div>
+        <div v-html="pageContent"></div>
         <v-icon v-on:click="toEdit">edit</v-icon>
       </div>
     </v-list-tile-content>
@@ -25,8 +25,13 @@ Component.registerHooks(["beforeRouteUpdate"]);
 export default class Read extends Vue {
   @Prop(String) public page!: string;
 
-  get content(): string {
-    return marked(wikiStore.selectedPageContent, { sanitize: true });
+  public pageContent: string = "";
+
+  private service: WikiApi;
+
+  constructor() {
+    super();
+    this.service = new WikiApi();
   }
 
   public toEdit(): void {
@@ -37,18 +42,26 @@ export default class Read extends Vue {
   }
 
   @Watch("page")
-  public onPageChange(newPage: string, oldPage: string) {
+  public async onPageChange(newPage: string, oldPage: string) {
     if (newPage === oldPage || newPage === "") {
       return;
     }
 
-    wikiStore.getPage(this.page);
+    this.setPageContent(newPage);
   }
 
-  public created(): void {
+  public async created() {
     if (this.page) {
-      wikiStore.getPage(this.page);
+      this.setPageContent(this.page);
     }
+  }
+
+  private async setPageContent(page: string) {
+    const content = await this.service.getPage(page).catch(err => {
+      return "# Create New Page\n\n Your page was not found.";
+    });
+
+    this.pageContent = marked(content, { sanitize: true });
   }
 }
 </script>
