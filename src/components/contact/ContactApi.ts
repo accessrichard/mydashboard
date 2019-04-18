@@ -1,4 +1,4 @@
-import HttpService from '@/api/HttpService';
+import HttpService from '@/lib/HttpService';
 import { IContact } from '@/types';
 
 export default class ContactApi {

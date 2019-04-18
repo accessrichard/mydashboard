@@ -1,4 +1,4 @@
-import HttpService from '@/api/HttpService';
+import HttpService from '@/lib/HttpService';
 import { ILinkCategory } from '@/types';
 
 export default class LinkApi {

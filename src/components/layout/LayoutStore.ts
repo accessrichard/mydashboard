@@ -6,7 +6,7 @@ import {
   getModule
 } from 'vuex-module-decorators';
 import { ISideBar } from '@/types';
-import store from '@/store';
+import store from '@/lib/store';
 
 @Module({ dynamic: true, namespaced: true, name: 'layout', store })
 class LayoutStore extends VuexModule {

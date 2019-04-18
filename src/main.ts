@@ -2,9 +2,14 @@ import Vue from 'vue';
 import './plugins/vuetify';
 import App from './App.vue';
 import router from './router';
-import store from '@/store';
+import store from '@/lib/store';
 import 'vuetify/dist/vuetify.min.css';
 import Vuelidate from 'vuelidate';
+import { handleVueError, handlePromiseError, handleWindowError } from "./lib/errorHandler"
+
+Vue.config.errorHandler = handleVueError;
+handlePromiseError();
+handleWindowError();
 
 Vue.use(Vuelidate);
 

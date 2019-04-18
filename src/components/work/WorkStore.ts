@@ -8,7 +8,7 @@ import {
 } from 'vuex-module-decorators';
 import WorkApi from '@/components/work/WorkApi';
 import { ISelectedWork } from '@/types';
-import store from '@/store';
+import store from '@/lib/store';
 
 const service = new WorkApi();
 
@@ -23,6 +23,8 @@ class Work extends VuexModule {
     public members: string[] = [];
 
     public selectedUsers: string[] = ["@me"];
+
+    public searchText: string = "";
 
     get selectedIterations(): IIterationSetting[] {
         return this.iterations
@@ -49,6 +51,11 @@ class Work extends VuexModule {
     @Mutation
     public SET_MEMBERS(members: string[]) {
         this.members = members;
+    }
+
+    @Mutation
+    public SET_SEARCH_TEXT(text: string) {
+        this.searchText = text;
     }
 
     @Action({ commit: 'SET_ITERATIONS' })

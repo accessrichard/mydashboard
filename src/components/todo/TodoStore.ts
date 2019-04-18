@@ -7,7 +7,7 @@ import {
 } from 'vuex-module-decorators';
 import TodoApi from '@/components/todo/TodoApi';
 import { ITodo } from '@/types';
-import store from '@/store';
+import store from '@/lib/store';
 
 const service = new TodoApi();
 

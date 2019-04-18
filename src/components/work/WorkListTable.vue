@@ -144,6 +144,13 @@ export default class WorkList extends Vue {
   }
 
   public async created() {
+    const types = workStore.getTypes();
+    const iterations = workStore.getIterations();
+    const statuses = workStore.getStatuses();
+
+    workStore.getMembers();
+
+    await Promise.all([types, iterations, statuses]);
     this.loadTable();
   }
 
@@ -154,10 +161,18 @@ export default class WorkList extends Vue {
       users: workStore.selectedUsers,
       iterations: workStore.selectedIterations.map(x => x.iteration.path),
       statuses: workStore.selectedStatuses.map(x => x.name),
-      types: workStore.selectedTypes.map(x => x.name)
+      types: workStore.selectedTypes.map(x => x.name),
+      text: workStore.searchText
     } as IWorkFilter;
 
-    this.workItems = await this.service.query(filter);
+    const results = await this.service.query(filter).catch((error: Error) => {
+      this.workItems = [];
+      console.log(error);
+    })
+
+    if (results instanceof Error === false){
+      this.workItems = results as IWorkItemFields[];
+    }
 
     this.loading = false;
   }

@@ -23,8 +23,9 @@
             <v-list-tile-title>Only My Work</v-list-tile-title>
           </v-list-tile>
           <div v-if="!isMyWorkOnly">
-              <user-auto-complete v-on:selected="selectUsers($event)"></user-auto-complete>
+            <user-auto-complete v-on:selected="selectUsers($event)"></user-auto-complete>
           </div>
+          <v-text-field class="pa-3" v-model="searchText" clearable label="Search Title"></v-text-field>
 
           <v-subheader>Iteration</v-subheader>
 
@@ -112,7 +113,15 @@ export default class WorkList extends Vue {
     this.$store.commit("work/SET_USERS", val ? ["@me"] : []);
   }
 
-  public selectUsers(users: string[]) {  
+  get searchText(): string {
+    return workStore.searchText;
+  }
+
+  set searchText(val: string) {
+    this.$store.commit("work/SET_SEARCH_TEXT", val);
+  }
+
+  public selectUsers(users: string[]) {
     this.$store.commit("work/SET_USERS", users);
   }
 

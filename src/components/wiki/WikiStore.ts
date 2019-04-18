@@ -6,7 +6,7 @@ import {
   getModule
 } from 'vuex-module-decorators';
 import WikiApi from '@/components/wiki/WikiApi';
-import store from '@/store';
+import store from '@/lib/store';
 
 const service = new WikiApi();
 

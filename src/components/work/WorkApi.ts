@@ -1,4 +1,4 @@
-import HttpService from '@/api/HttpService';
+import HttpService from '@/lib/HttpService';
 import { IIterationPath, IWorkItemFields, IWorkFilter } from '@/types';
 
 export default class WorkApi {

@@ -7,7 +7,7 @@ import {
 } from 'vuex-module-decorators';
 import ContactApi from '@/components/contact/ContactApi';
 import { IContact } from '@/types';
-import store from '@/store';
+import store from '@/lib/store';
 
 const service = new ContactApi();
 

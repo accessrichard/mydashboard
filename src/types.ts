@@ -157,9 +157,23 @@ export interface IWorkFilter {
   users?: string[];
   statuses?: string[];
   types?: string[];
+  text?: string;
 }
 
 export interface ISelectedWork {
   name: string;
   isOn: boolean;
+}
+
+export interface IWindowError {
+  message: any;
+  url: any;
+  col: any;
+  line: any;
+}
+
+export interface IVueError {
+  error: any;
+  vm: any;
+  info: any;
 }
