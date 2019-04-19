@@ -32,6 +32,7 @@
         :search="search"
         hide-actions
         class="v-table__overflow_hidden"
+        :no-data-text="noDataText"
       >
         <v-progress-linear v-slot:progress color="primary" indeterminate></v-progress-linear>
         <template v-slot:items="props">
@@ -97,6 +98,10 @@ export default class WorkList extends Vue {
   public isSetttingsOpen: boolean = false;
 
   public pinnedList: number[] = [];
+
+  public readonly defaultNoData: string = "No Data Available";
+
+  public noDataText: string = this.defaultNoData;
 
   public headers: any = [
     {
@@ -170,7 +175,10 @@ export default class WorkList extends Vue {
       console.log(error);
     });
 
-    if (results instanceof Error === false) {
+    if (results instanceof Error) {
+      this.noDataText = results.message;
+    } else {
+      this.noDataText = this.defaultNoData;
       this.workItems = results as IWorkItemFields[];
     }
 
