@@ -68,6 +68,11 @@ export interface ILink {
   text: string;
 }
 
+export interface ILinkCategory {
+  text: string;
+  links: ILink[];
+}
+
 export interface IWindowError {
   message: any;
   url: any;
