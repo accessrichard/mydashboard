@@ -49,19 +49,6 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: 'todo' */ '@/components/todo/Todo.vue')
     },
-    {
-      path: '/work',
-      name: 'work',
-      component: () =>
-        import(/* webpackChunkName: 'work' */ '@/components/work/WorkListTable.vue')
-    },
-    {
-      path: '/work/:id',
-      name: 'workItem',
-      component: () =>
-        import(/* webpackChunkName: 'work' */ '@/components/work/WorkListItem.vue')
-    }
-
   ]
 });
 

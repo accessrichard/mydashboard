@@ -52,86 +52,6 @@ export interface IContactNavigator {
   view(name: string): void;
 }
 
-export interface IComment {
-  revisedBy?: IIdentityReference;
-  revisedDate?: Date;
-  revision?: number;
-  text?: string;
-}
-
-export interface IIdentityReference {
-  id?: string;
-  name?: string;
-  url?: string;
-}
-
-export interface IDates {
-  startDate: string;
-  finishDate: string;
-}
-
-export interface IIterationPath {
-  id: string;
-  name: string;
-  path: string;
-  attributes: IDates;
-}
-
-export interface IIterationSetting {
-  isOn: boolean;
-  iteration: IIterationPath;
-}
-
-export interface IWorkItemRelation {
-  rel: string;
-  url: string;
-  creationDate?: string;
-  name?: string;
-}
-
-export interface IWorkItemFields {
-  areaPath: string;
-  attachments?: IWorkItemRelation[];
-  teamProject: string;
-  iterationPath?: string;
-  workItemType: string;
-  state: string;
-  reason: string;
-  assignedTo?: string;
-  createdDate: Date;
-  createdBy: string;
-  changedDate: Date;
-  changedBy: string;
-  title?: string;
-  boardColumn?: string;
-  boardColumnDone?: string;
-  stateChangeDate: Date;
-  activityDate?: Date;
-  resolvedDate?: Date;
-  resolvedBy?: string;
-  storyPoints?: number;
-  description?: string;
-  history?: string;
-  tags?: string;
-  id?: number;
-  nodeName?: string;
-  remainingWork?: number;
-  originalEstimate?: number;
-  completedWork?: number;
-  revisions?: IChangeHistory[];
-  links?: IWorkItemRelation[];
-  comments?: IComment[];
-  reproSteps?: string;
-  systemInfo?: string;
-  [key: string]: any;
-}
-
-export interface IChangeHistory {
-  [key: string]: any;
-  changedBy?: string;
-  changedDate?: string;
-}
-
 export interface IHtmlDialog {
   title?: string;
   html?: string;
@@ -142,27 +62,10 @@ export interface IKeyValue {
   key: any;
   value: any;
 }
-export interface ILinkCategory {
-  text: string;
-  links: ILink[];
-}
 
 export interface ILink {
   href: string;
   text: string;
-}
-
-export interface IWorkFilter {
-  iterations?: string[];
-  users?: string[];
-  statuses?: string[];
-  types?: string[];
-  text?: string;
-}
-
-export interface ISelectedWork {
-  name: string;
-  isOn: boolean;
 }
 
 export interface IWindowError {

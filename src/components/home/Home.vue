@@ -8,9 +8,6 @@
         <todos></todos>
       </v-flex>
       <v-flex xs12>
-          <work></work>
-      </v-flex>
-      <v-flex xs12>
         <contacts></contacts>
       </v-flex>
     </v-layout>
@@ -22,15 +19,13 @@ import { Component, Vue } from "vue-property-decorator";
 import Todo from "@/components/todo/Todo.vue";
 import Contact from "@/components/contact/Contact.vue";
 import ViewPage from "@/components/wiki/ViewPage.vue";
-import Work from "@/components/work/WorkListTable.vue";
 
 @Component({
   name: "Home",
   components: {
     todos: Todo,
     contacts: Contact,
-    ViewPage,
-    Work
+    ViewPage
   }
 })
 export default class Home extends Vue {

@@ -1,11 +1,5 @@
 <template>
   <div>
-    <v-dialog v-model="isFrameVisible" width="210px">
-      <keep-alive>
-        <header-frame id="header-frame"></header-frame>
-      </keep-alive>
-    </v-dialog>
-
     <v-speed-dial
       v-model="fab"
       :top="top"
@@ -36,13 +30,8 @@
 <script lang='ts'>
 import { Vue, Component, Prop } from "vue-property-decorator";
 import layoutStore from "@/components/layout/LayoutStore";
-import HeaderFrame from "@/components/layout/AppEmbeddedFramePage.vue";
 
-@Component({
-  components: {
-    HeaderFrame
-  }
-})
+@Component
 export default class AppActionButton extends Vue {
   public fab: boolean = false;
   public top: boolean = true;
@@ -53,7 +42,6 @@ export default class AppActionButton extends Vue {
   public hover: boolean = true;
   public tabs: any = null;
   public transition: string = "slide-y";
-  public isFrameVisible: boolean = false;
 
   public toggleLeftSidebar() {
     layoutStore.leftSidebar.isVisible = !layoutStore.leftSidebar.isVisible;
